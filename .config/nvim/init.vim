@@ -32,7 +32,7 @@ Plug 'ap/vim-css-color'
 " ui
 Plug 'itchyny/lightline.vim'
 Plug 'cormacrelf/vim-colors-github'
-Plug '~/Projects/repos/vim-colors'
+Plug '~/Projects/_repos/vim-colors'
 
 call plug#end()
 

@@ -20,32 +20,12 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd extendedglob nomatch notify
 
-### Plugins Admin ###
-if [[ ! -d $XDG_CONFIG_HOME/zplug ]]; then
-  git clone https://github.com/zplug/zplug $XDG_CONFIG_HOME/zplug
-  source $XDG_CONFIG_HOME/zplug/init.zsh && zplug update --self
-fi
-source $XDG_CONFIG_HOME/zplug/init.zsh
-
-zplug 'lib/git', from:oh-my-zsh
-zplug 'lib/theme-and-appearance', from:oh-my-zsh
-
-# Install packages that have not been installed yet
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
-
-zplug load
-
 ### Aliases ###
 source ~/.config/zsh/aliases.zsh
 
 ### Prompt ###
+autoload -U promptinit; promptinit
+prompt spaceship
 source ~/.config/zsh/zprompt.zsh
 
 ### Completion system ###

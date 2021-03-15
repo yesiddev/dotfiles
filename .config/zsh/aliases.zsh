@@ -13,6 +13,8 @@ alias vim='nvim'
 alias pj='cd $HOME/Projects'
 alias dw='cd $HOME/Downloads'
 alias dd='cd $HOME/Documents'
+alias pjr='cd $HOME/Projects/_repos'
+alias pjp='cd $HOME/Projects/_practice'
 
 # Dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
