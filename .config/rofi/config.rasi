@@ -1,0 +1,37 @@
+configuration {
+  display-run:                  " ";
+  display-drun:                 "  ";
+  display-window:               "  ";
+  font:                         "Roboto Mono Medium 12";
+  modi:                         "window,run,drun";
+  hide-scrollbar:               true;
+  lines:                        5;
+  location:                     2;
+  yoffset:                      100;
+}
+
+* {
+  background-color: #151515;
+  border-color: #00000000;
+  text-color: #414141;
+}
+
+window {
+  border: 0;
+  border-radius: 5px;
+  padding: 15;
+  width: 25%;
+}
+
+element {
+  border-radius: 15px;
+  padding: 5 0 5 10;
+}
+
+element selected {
+  text-color: #fff;
+}
+
+entry {
+  color: #f5f5f5;
+}

@@ -1,0 +1,19 @@
+#!/usr/bin/sh
+
+user=$(yq -e '."github.com".user' "$HOME"/.config/gh/hosts.yml)
+repo=$(basename "$PWD")
+
+{
+git init
+echo "# My $repo Repository" > README.md
+git add .
+git commit -m "initial commit -setup with script"
+git branch -M main
+} &> /dev/null
+echo "$(tput setaf 2)✓ $(tput sgr0)Git initialized"
+gh repo create "$repo" --public -y
+echo "$(tput setaf 2)✓ $(tput sgr0)Uploading files to repo"
+{
+git push -u origin main
+} &> /dev/null
+echo "$(tput setaf 2)✓ $(tput sgr0)Github repo created succesfully"

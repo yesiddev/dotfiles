@@ -1,0 +1,53 @@
+# Term variable
+#env:
+#TERM: screen-256color
+
+# Window style
+window:
+  padding:
+    x: 2
+    y: 2
+
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+# History lenght
+scrolling:
+  history: 5000
+
+# Font
+font:
+  size: 11
+  normal:
+    family: Fira Mono
+    style: Medium
+
+colors:
+  name: Google (light)
+  author: Chris Kempson
+  primary:
+    background: "#ffffff"
+    foreground: "#373b41"
+  cursor:
+    text: "#ffffff"
+    cursor: "#373b41"
+  normal:
+    black: "#1d1f21"
+    red: "#cc342b"
+    green: "#198844"
+    yellow: "#fba922"
+    blue: "#3971ed"
+    magenta: "#a36ac7"
+    cyan: "#3971ed"
+    white: "#c5c8c6"
+  bright:
+    black: "#969896"
+    red: "#cc342b"
+    green: "#198844"
+    yellow: "#fba922"
+    blue: "#3971ed"
+    magenta: "#a36ac7"
+    cyan: "#3971ed"
+    white: "#ffffff"
