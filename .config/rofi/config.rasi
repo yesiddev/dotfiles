@@ -1,6 +1,6 @@
 configuration {
   display-run:                  " ";
-  display-drun:                 "  ";
+  display-drun:                 " ";
   display-window:               "  ";
   font:                         "Roboto Mono Medium 12";
   modi:                         "window,run,drun";

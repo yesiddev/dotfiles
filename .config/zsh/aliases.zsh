@@ -18,14 +18,14 @@ alias pjp='cd $HOME/Projects/_practice'
 
 # Dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dota='dot add '
-alias dotc='dot commit -m '
+alias dota='dot add'
+alias dotc='dot commit -m'
 alias dotp='dot push'
-alias dots='dot status '
+alias dots='dot status'
 
 # Config files
 alias :zsh='v ~/.zshrc'
-alias :term='v ~/.config/alacritty/alacritty.yml'
+alias :term='v ~/.config/kitty/kitty.conf'
 alias :editor='v ~/.config/nvim/init.vim'
 alias :alias='v ~/.config/zsh/aliases.zsh'
 alias :prompt='v ~/.config/zsh/zprompt.zsh'

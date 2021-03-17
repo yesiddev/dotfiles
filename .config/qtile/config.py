@@ -13,7 +13,7 @@ from libqtile.lazy import lazy
 from libqtile import qtile
 
 mod = "mod4"                # Set SUPER/WINDOWS 
-terminal = "alacritty"      # Default terminal
+terminal = "kitty"      # Default terminal
 
 keys = [Key(key[0], key[1], *key[2:]) for key in[
     ### Window Essentials
@@ -57,6 +57,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     # Launch essential apps
     ([mod], "Return", lazy.spawn(terminal)),
     ([mod], "comma", lazy.spawn("rofi -show drun")),
+    ([mod], "0", lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu")),
 
     # Hardware Volumen and media controls
     ([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 2")),
@@ -70,12 +71,23 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     (["mod1"], "1", lazy.spawn("google-chrome-stable")),
     (["mod1"], "2", lazy.spawn("figma-linux")),
     (["mod1"], "3", lazy.spawn("spotify")),
+    (["mod1"], "8", lazy.spawn("alacritty")),
     (["mod1"], "9", lazy.spawn("pcmanfm")),
     (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun")),
+    (["mod1"], "c", lazy.spawn("galculator")),
+
 ]]
 
 groups = [Group(i) for i in [
-    "\uf121", "\uf120","\uf268", "\uf5ae","\uf144", "\uf395", "\uf07b", "\uf013", "\uf381",
+    "\uf121", # 
+    "\uf5ae", # 
+    "\uf268", # 
+    "\uf144", # 
+    "\uf013", # 
+    "\uf07b", # 
+    "\uf381", # 
+    "\uf395", # 
+    "\uf120", # 
 ]]
 
 for i, group in enumerate(groups):
@@ -93,8 +105,8 @@ layout_conf = {
 
 
 layouts = [
-    layout.MonadTall(**layout_conf),
     layout.Columns(**layout_conf),
+    layout.MonadTall(**layout_conf),
     layout.MonadWide(**layout_conf),
     layout.Max(**layout_conf),
     layout.Tile(shift_windows=True, **layout_conf),
@@ -109,15 +121,15 @@ layouts = [
 ]
 
 colors = [
-        ["#111315", "#111315"], # Background
-        ["#ffffff", "#ffffff"], # Foreground
-        ["#c03c3c", "#c03c3c"], # Current border
-        ["#8cb1d5", "#8cb1d5"], # Other tabs
-        ["#aeaeaf", "#aeaeaf"], # Inactives
+        ["#f4f5f9", "#f4f5f9"], # Background
+        ["#08182b", "#08182b"], # Foreground
+        ["#f1404b", "#f1404b"], # Current border
+        ["#252c41", "#252c41"], # Other tabs
+        ["#9b9ca1", "#9b9ca1"], # Inactives
         ]
 
 widget_defaults = dict(
-    font = 'Roboto Mono Medium',
+    font = 'Noto Sans',
     fontsize = 12,
     padding = 2,
     background = colors[0],
@@ -136,7 +148,7 @@ screens = [
                     inactive = colors[4],
                     rounded = False,
                     highlight_color = colors[2],
-                    block_highlight_text_color = colors[1],
+                    block_highlight_text_color = colors[0],
                     highlight_method = 'line',
                     urgent_border = colors[3],
                     this_current_screen_border = colors[2],
@@ -149,8 +161,12 @@ screens = [
                 widget.WindowName(
                     max_chars = 70
                     ),
+                widget.CapsNumLockIndicator(
+                    foreground = '#dddfe6',
+                    ),
                 widget.CurrentLayout(
-                    padding = 8
+                    padding = 8,
+                    foreground = colors[4]
                     ),
                 widget.CheckUpdates(
                     update_interval = 1800,
@@ -162,7 +178,7 @@ screens = [
                     ),
                 widget.Systray(),
                 widget.Clock(
-                    format = '%a %b %d %I:%M %p',
+                    format = '%I:%M %p',
                     padding = 16
                     ),
             ],
@@ -196,6 +212,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='pcmanfm'),
     Match(wm_class='leafpad'),
+    Match(wm_class='lxappearance'),
+    Match(wm_class='galculator'),
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

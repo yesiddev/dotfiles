@@ -1,13 +1,13 @@
-"" -- Setup nvim -- 
+"" ----------- Setup nvim ----------- 
 set nocompatible
 set fileencoding=utf-8
 set encoding=utf-8
 
-"" -- Plugin Manager Setup --
+"" ----------- Plugin Manager Setup -----------
 
 " Install if no exist
 if empty(glob('~/.config/nvim/autoload/plug.vim')) 
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim -----create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
 " utilities
 Plug 'airblade/vim-gitgutter'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'christoomey/vim-tmux-navigator'
 
 " ide
 Plug 'jiangmiao/auto-pairs'
@@ -31,12 +32,13 @@ Plug 'ap/vim-css-color'
 
 " ui
 Plug 'itchyny/lightline.vim'
-Plug 'cormacrelf/vim-colors-github'
+Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'gruvbox-community/gruvbox'
 Plug '~/Projects/_repos/vim-colors'
 
 call plug#end()
 
-"" -- Default Settings --
+"" ----- Default Settings -----
 
 " Core
 set clipboard+=unnamedplus
@@ -72,12 +74,34 @@ set title
 set number
 set cursorline
 set termguicolors
+set signcolumn=yes
+
 set background=light
-colorscheme lite
+colorscheme light
 
 let g:lightline = {
-  	\ 'colorscheme': 'one',
-	  \ }
+      \ 'active': {
+      \   'left': [['mode', 'paste'], [], ['absolutepath', 'modified']],
+      \   'right': [['kitestatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
+      \ },
+      \ 'inactive': {
+      \   'left': [['inactive'], ['relativepath']],
+      \   'right': [['bufnum']]
+      \ },
+      \ 'component': {
+      \   'bufnum': '%n',
+      \   'inactive': 'inactive'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'kitestatus': 'kite#statusline'
+      \ },
+      \ 'colorscheme': 'one',
+      \ 'subseparator': {
+      \   'left': '',
+      \   'right': ''
+      \ }
+      \}
 
 " Search
 set nohlsearch
@@ -85,7 +109,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-"" -- Plugins Settings --
+"" ----- Plugins Settings -----
 " closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.ts,*.tsx'
 
@@ -95,11 +119,12 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeDirArrows=1
 
-" Indentline
-"let g:indentLine_color_gui = '#aeaeaf'
+" javascript syntax
+let g:javascript_enable_domhtmlcss=1
 
-"" -- Shortcuts --
+"" ----- Shortcuts -----
 let mapleader="\<Space>"
 
 " Save, close, erase and execute

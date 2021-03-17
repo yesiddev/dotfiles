@@ -19,6 +19,7 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd extendedglob nomatch notify
+precmd () {print -Pn "\e]0;%c\a"}
 
 ### Aliases ###
 source ~/.config/zsh/aliases.zsh
