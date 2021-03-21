@@ -13,7 +13,7 @@ from libqtile.lazy import lazy
 from libqtile import qtile
 
 mod = "mod4"                # Set SUPER/WINDOWS 
-terminal = "kitty"      # Default terminal
+terminal = "kitty"          # Default terminal
 
 keys = [Key(key[0], key[1], *key[2:]) for key in[
     ### Window Essentials
@@ -49,10 +49,10 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     ([mod], "Tab", lazy.next_layout()),
 
     # Qtile essentials
-    ([mod], "w", lazy.window.kill()), # Kill window
-    ([mod, "control"], "r", lazy.restart()), # Restart Qtile
-    ([mod, "control"], "q", lazy.shutdown()), # Shutdown Qtile
-    ([mod], "r", lazy.spawncmd()), # Prompt Widget
+    ([mod], "w", lazy.window.kill()),           # Kill window
+    ([mod, "control"], "r", lazy.restart()),    # Restart Qtile
+    ([mod, "control"], "q", lazy.shutdown()),   # Shutdown Qtile
+    ([mod], "r", lazy.spawncmd()),              # Prompt Widget
     
     # Launch essential apps
     ([mod], "Return", lazy.spawn(terminal)),
@@ -71,6 +71,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     (["mod1"], "1", lazy.spawn("google-chrome-stable")),
     (["mod1"], "2", lazy.spawn("figma-linux")),
     (["mod1"], "3", lazy.spawn("spotify")),
+    (["mod1"], "4", lazy.spawn("leafpad")),
     (["mod1"], "8", lazy.spawn("alacritty")),
     (["mod1"], "9", lazy.spawn("pcmanfm")),
     (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun")),
@@ -79,9 +80,9 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
 ]]
 
 groups = [Group(i) for i in [
+    "\uf268", # 
     "\uf121", # 
     "\uf5ae", # 
-    "\uf268", # 
     "\uf144", # 
     "\uf013", # 
     "\uf07b", # 
@@ -122,16 +123,15 @@ layouts = [
 
 colors = [
         ["#f4f5f9", "#f4f5f9"], # Background
-        ["#08182b", "#08182b"], # Foreground
+        ["#383c4a", "#383c4a"], # Foreground
         ["#f1404b", "#f1404b"], # Current border
         ["#252c41", "#252c41"], # Other tabs
         ["#9b9ca1", "#9b9ca1"], # Inactives
         ]
 
 widget_defaults = dict(
-    font = 'Noto Sans',
-    fontsize = 12,
-    padding = 2,
+    font = 'Noto Sans Medium',
+    fontsize = 14,
     background = colors[0],
     foreground = colors[1]
 )
@@ -159,27 +159,29 @@ screens = [
                     ),
                 widget.Prompt(),
                 widget.WindowName(
-                    max_chars = 70
-                    ),
-                widget.CapsNumLockIndicator(
-                    foreground = '#dddfe6',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 8
                     ),
                 widget.CurrentLayout(
                     padding = 8,
                     foreground = colors[4]
                     ),
                 widget.CheckUpdates(
-                    update_interval = 1800,
-                    distro = "Arch_checkupdates",
-                    display_format = "\uf021 {updates}",
+                    distro = "Arch",
+                    colour_have_updates = colors[2],
+                    colour_no_updates = colors[1],
+                    display_format = "\uf021",
                     foreground = colors[2],
-                    mouse_callbacks = {'Button1': lambda:
-                        qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')}
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu --noconfirm')}
                     ),
-                widget.Systray(),
+                widget.Systray(
+                    padding = 8
+                    ),
                 widget.Clock(
                     format = '%I:%M %p',
-                    padding = 16
+                    padding = 8,
+                    fontsize = 16
                     ),
             ],
             24, 
