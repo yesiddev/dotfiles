@@ -75,13 +75,14 @@ set number
 set cursorline
 set termguicolors
 set signcolumn=yes
+set colorcolumn=+1
 
 set background=light
 colorscheme light
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['absolutepath', 'modified']],
+      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
       \   'right': [['kitestatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
       \ },
       \ 'inactive': {

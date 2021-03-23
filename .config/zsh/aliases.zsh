@@ -25,7 +25,8 @@ alias dots='dot status'
 
 # Config files
 alias :zsh='v ~/.zshrc'
-alias :term='v ~/.config/kitty/kitty.conf'
+alias :kitty='v ~/.config/kitty/kitty.conf'
+alias :alacritty='v ~/.config/alacritty/alacritty.yml'
 alias :editor='v ~/.config/nvim/init.vim'
 alias :alias='v ~/.config/zsh/aliases.zsh'
 alias :prompt='v ~/.config/zsh/zprompt.zsh'
@@ -57,7 +58,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias md='mkdir -p'
-alias rf='rm -rf'
+alias rd='rm -rf'
 
 # System utilities
 alias c='clear'

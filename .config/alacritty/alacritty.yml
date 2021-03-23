@@ -19,35 +19,37 @@ scrolling:
 
 # Font
 font:
-  size: 11
+  size: 13
   normal:
-    family: Fira Mono
+    family: SF Mono Powerline
     style: Medium
 
 colors:
-  name: Google (light)
-  author: Chris Kempson
+  # Default colors
   primary:
-    background: "#ffffff"
-    foreground: "#373b41"
-  cursor:
-    text: "#ffffff"
-    cursor: "#373b41"
+    foreground: '#282c34'
+    background: '#ffffff'
+
+  # Normal colors
   normal:
-    black: "#1d1f21"
-    red: "#cc342b"
-    green: "#198844"
-    yellow: "#fba922"
-    blue: "#3971ed"
-    magenta: "#a36ac7"
-    cyan: "#3971ed"
-    white: "#c5c8c6"
+    # NOTE: Use '#131613' for the `black` color if you'd like to see
+    # black text on the background.
+    black: '#282c34'
+    red: '#e06c75'
+    green: '#98c379'
+    yellow: '#d19a66'
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
+    white: '#abb2bf'
+
+  # Bright colors
   bright:
-    black: "#969896"
-    red: "#cc342b"
-    green: "#198844"
-    yellow: "#fba922"
-    blue: "#3971ed"
-    magenta: "#a36ac7"
-    cyan: "#3971ed"
-    white: "#ffffff"
+    black: '#5c6370'
+    red: '#e06c75'
+    green: '#98c379'
+    yellow: '#d19a66'
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
+    white: '#ffffff'

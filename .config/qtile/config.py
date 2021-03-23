@@ -13,7 +13,7 @@ from libqtile.lazy import lazy
 from libqtile import qtile
 
 mod = "mod4"                # Set SUPER/WINDOWS 
-terminal = "kitty"          # Default terminal
+terminal = "alacritty"      # Default terminal
 
 keys = [Key(key[0], key[1], *key[2:]) for key in[
     ### Window Essentials
@@ -69,12 +69,12 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
 
     ### Apps
     (["mod1"], "1", lazy.spawn("google-chrome-stable")),
-    (["mod1"], "2", lazy.spawn("figma-linux")),
-    (["mod1"], "3", lazy.spawn("spotify")),
-    (["mod1"], "4", lazy.spawn("leafpad")),
-    (["mod1"], "8", lazy.spawn("alacritty")),
+    (["mod1"], "2", lazy.spawn("code-oss")),
+    (["mod1"], "3", lazy.spawn("figma-linux"), lazy.group["\uf5ae"].toscreen()),
+    (["mod1"], "4", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
+    (["mod1"], "8", lazy.spawn("leafpad")),
     (["mod1"], "9", lazy.spawn("pcmanfm")),
-    (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun")),
+    (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun"), lazy.group["\uf07b"].toscreen()),
     (["mod1"], "c", lazy.spawn("galculator")),
 
 ]]
@@ -216,6 +216,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='leafpad'),
     Match(wm_class='lxappearance'),
     Match(wm_class='galculator'),
+    Match(wm_class='vlc'),
+    Match(wm_class='pavucontrol'),
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
