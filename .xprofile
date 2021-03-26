@@ -4,7 +4,7 @@
 
 # Default folders
 export XDG_CONFIG_HOME="$HOME/.config"
-# export ZPLUG_HOME="$HOME/.config/zsh/zplug"
+export QT_STYLE_OVERRIDE=kvantum
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap

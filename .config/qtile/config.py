@@ -24,7 +24,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     ([mod], "j", lazy.layout.down()),
     ([mod], "k", lazy.layout.up()),
     ([mod], "space", lazy.layout.next()),
-    
+
     # Moving windows in current stack
     ([mod, "shift"], "h", lazy.layout.shuffle_left()),
     ([mod, "shift"], "j", lazy.layout.shuffle_down()),
@@ -53,7 +53,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     ([mod, "control"], "r", lazy.restart()),    # Restart Qtile
     ([mod, "control"], "q", lazy.shutdown()),   # Shutdown Qtile
     ([mod], "r", lazy.spawncmd()),              # Prompt Widget
-    
+
     # Launch essential apps
     ([mod], "Return", lazy.spawn(terminal)),
     ([mod], "comma", lazy.spawn("rofi -show drun")),
@@ -104,7 +104,6 @@ layout_conf = {
     "border_focus": "#c03c3c",
     }
 
-
 layouts = [
     layout.Columns(**layout_conf),
     layout.MonadTall(**layout_conf),
@@ -122,18 +121,18 @@ layouts = [
 ]
 
 colors = [
-        ["#f4f5f9", "#f4f5f9"], # Background
-        ["#383c4a", "#383c4a"], # Foreground
-        ["#f1404b", "#f1404b"], # Current border
-        ["#252c41", "#252c41"], # Other tabs
-        ["#9b9ca1", "#9b9ca1"], # Inactives
+        ["#f4f5f9", "#f4f5f9"], # Primary
+        ["#1c140d", "#1c140d"], # Primary Alt
+        ["#f1404b", "#f1404b"], # Accent
+        ["#252c41", "#252c41"], # Secondary
+        ["#9b9ca1", "#9b9ca1"], # Secondaty Alt
         ]
 
 widget_defaults = dict(
     font = 'Noto Sans Medium',
     fontsize = 14,
-    background = colors[0],
-    foreground = colors[1]
+    background = colors[1],
+    foreground = colors[0]
 )
 extension_defaults = widget_defaults.copy()
 
@@ -144,7 +143,7 @@ screens = [
                 widget.GroupBox(
                     fontsize = 16,
                     borderwidth = 1,
-                    active = colors[1],
+                    active = colors[0],
                     inactive = colors[4],
                     rounded = False,
                     highlight_color = colors[2],
@@ -153,8 +152,8 @@ screens = [
                     urgent_border = colors[3],
                     this_current_screen_border = colors[2],
                     this_screen_border = colors[4],
-                    other_current_screen_border = colors[0],
-                    other_screen_border = colors[0],
+                    other_current_screen_border = colors[1],
+                    other_screen_border = colors[1],
                     disable_drag = True
                     ),
                 widget.Prompt(),
@@ -165,14 +164,15 @@ screens = [
                     ),
                 widget.CurrentLayout(
                     padding = 8,
-                    foreground = colors[4]
+                    foreground = colors[0]
                     ),
                 widget.CheckUpdates(
                     distro = "Arch",
                     colour_have_updates = colors[2],
-                    colour_no_updates = colors[1],
+                    colour_no_updates = colors[0],
                     display_format = "\uf021",
                     foreground = colors[2],
+                    update_interval = 43200,
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu --noconfirm')}
                     ),
                 widget.Systray(
@@ -184,7 +184,7 @@ screens = [
                     fontsize = 16
                     ),
             ],
-            24, 
+            24,
         ),
     ),
 ]
@@ -218,6 +218,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='galculator'),
     Match(wm_class='vlc'),
     Match(wm_class='pavucontrol'),
+    Match(wm_class='sxiv'),
+    Match(wm_class='file-roller'),
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

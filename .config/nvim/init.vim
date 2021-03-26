@@ -17,8 +17,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 " utilities
 Plug 'airblade/vim-gitgutter'
-Plug 'jelera/vim-javascript-syntax'
+"Plug 'jelera/vim-javascript-syntax'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'sheerun/vim-polyglot'
 
 " ide
 Plug 'jiangmiao/auto-pairs'
@@ -32,8 +33,7 @@ Plug 'ap/vim-css-color'
 
 " ui
 Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-gruvbox.vim'
-Plug 'gruvbox-community/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug '~/Projects/_repos/vim-colors'
 
 call plug#end()
@@ -77,8 +77,7 @@ set termguicolors
 set signcolumn=yes
 set colorcolumn=+1
 
-set background=light
-colorscheme light
+colorscheme nord
 
 let g:lightline = {
       \ 'active': {
@@ -97,7 +96,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'kitestatus': 'kite#statusline'
       \ },
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'nord',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
