@@ -1,4 +1,4 @@
-##!/bin/sh
+#!/bin/sh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -23,20 +23,15 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# Screen
-xrandr --output DVI-I-1 --off --output HDMI-1 --primary --mode 2560x1080 --pos 0x0 --rotate normal --output VGA-1 --off
+# start some nice programs
 
-# Disable screenlock
-xset -dpms
-xset s noblank
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
 xset s off
 
-# Default programs at start
-setxkbmap es &
-nm-applet &
-picom -f &
-udiskie -Nt &
-volumeicon &
-lxsession &
-feh --bg-fill ~/Wallpapers/luke.jpg &
-numlockx &
+exec gnome-session

@@ -24,13 +24,12 @@ alias dotp='dot push'
 alias dots='dot status'
 
 # Config files
-alias :zsh='v ~/.zshrc'
-alias :kitty='v ~/.config/kitty/kitty.conf'
 alias :alacritty='v ~/.config/alacritty/alacritty.yml'
-alias :editor='v ~/.config/nvim/init.vim'
 alias :alias='v ~/.config/zsh/aliases.zsh'
+alias :nvim='v ~/.config/nvim/init.vim'
 alias :prompt='v ~/.config/zsh/zprompt.zsh'
 alias :qtile='v ~/.config/qtile/config.py'
+alias :zsh='v ~/.zshrc'
 alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
 
 # Git

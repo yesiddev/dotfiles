@@ -72,11 +72,18 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     (["mod1"], "2", lazy.spawn("code-oss")),
     (["mod1"], "3", lazy.spawn("figma-linux"), lazy.group["\uf5ae"].toscreen()),
     (["mod1"], "4", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
+    (["mod1"], "5", lazy.spawn("virtualbox"), lazy.group["\uf381"].toscreen()),
     (["mod1"], "8", lazy.spawn("leafpad")),
     (["mod1"], "9", lazy.spawn("pcmanfm")),
     (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun"), lazy.group["\uf07b"].toscreen()),
     (["mod1"], "c", lazy.spawn("galculator")),
 
+    ### Config Files
+    ([mod, "mod1"], "a", lazy.spawn(terminal+" -e nvim .config/alacritty/alacritty.yml")),
+    ([mod, "mod1"], "p", lazy.spawn(terminal+" -e nvim .config/zsh/zprompt.zsh")),
+    ([mod, "mod1"], "q", lazy.spawn(terminal+" -e nvim .config/qtile/config.py")),
+    ([mod, "mod1"], "v", lazy.spawn(terminal+" -e nvim .config/nvim/init.vim")),
+    ([mod, "mod1"], "z", lazy.spawn(terminal+" -e nvim ~/.zshrc")),
 ]]
 
 groups = [Group(i) for i in [
@@ -84,11 +91,7 @@ groups = [Group(i) for i in [
     "\uf121", # 
     "\uf5ae", # 
     "\uf144", # 
-    "\uf013", # 
-    "\uf07b", # 
     "\uf381", # 
-    "\uf395", # 
-    "\uf120", # 
 ]]
 
 for i, group in enumerate(groups):
@@ -172,7 +175,7 @@ screens = [
                     colour_no_updates = colors[0],
                     display_format = "\uf021",
                     foreground = colors[2],
-                    update_interval = 43200,
+                    update_interval = 3000,
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu --noconfirm')}
                     ),
                 widget.Systray(
