@@ -75,7 +75,7 @@ set number
 set cursorline
 set termguicolors
 set signcolumn=yes
-set colorcolumn=+1
+"set colorcolumn=+1
 
 colorscheme nord
 

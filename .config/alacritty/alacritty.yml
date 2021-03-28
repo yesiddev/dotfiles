@@ -1,28 +1,52 @@
-# Term variable
-#env:
-#TERM: screen-256color
-
 # Window style
 window:
+  dimensions:
+    columns: 80
+    lines: 40
+
   padding:
-    x: 2
-    y: 2
+    x: 5
+    y: 5
 
-  title: Alacritty
-  class:
-    instance: Alacritty
-    general: Alacritty
+  decorations: none
 
-# History lenght
 scrolling:
   history: 5000
+  multiplier: 3
+
+window.dynamic_title: true
 
 # Font
 font:
-  size: 12
   normal:
-    family: Fira Mono
-    style: Medium
+    family: Fira Code
+    style: Regular
+
+  bold:
+    family: Fira Code
+    style: Bold
+
+  italic:
+    family: Fira Code
+    style: Italic
+
+  size: 12
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+  use_thin_strokes: false
+
+debug:
+  persistent_logging: false
+
+draw_bold_text_with_bright_colors: true
+
+# Keybinding
+key_bindings:
+  - { key: N, mods: Control, action: SpawnNewInstance }
 
 colors:
   # Default colors
