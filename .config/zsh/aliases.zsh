@@ -57,6 +57,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias md='mkdir -p'
 alias rd='rm -rf'
+alias vf='vifmrun'
 
 # System utilities
 alias c='clear'
