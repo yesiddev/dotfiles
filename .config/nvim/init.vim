@@ -7,9 +7,9 @@ set encoding=utf-8
 
 " Install if no exist
 if empty(glob('~/.config/nvim/autoload/plug.vim')) 
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim -----create-dirs
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Load Plugins

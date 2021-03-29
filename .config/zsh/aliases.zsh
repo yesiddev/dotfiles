@@ -28,7 +28,6 @@ alias :alacritty='v ~/.config/alacritty/alacritty.yml'
 alias :alias='v ~/.config/zsh/aliases.zsh'
 alias :nvim='v ~/.config/nvim/init.vim'
 alias :prompt='v ~/.config/zsh/zprompt.zsh'
-alias :qtile='v ~/.config/qtile/config.py'
 alias :zsh='v ~/.zshrc'
 alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
 

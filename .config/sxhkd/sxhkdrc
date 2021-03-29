@@ -1,0 +1,126 @@
+# WINDOW ESSENTIALS
+
+# Focus/Swap windows by direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Focus/Moving to workspace
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# Smart Resize
+super + ctrl + {h,j,k,l}
+  n=10; \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
+
+# Alternate between the tiled and floating
+super + f
+	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
+	bspc node --state \~$state
+
+# Alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# Toggle fullscreen
+super + u
+	bspc node --state \~fullscreen
+
+# Swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+# Bspwm 
+super + ctrl + {q,r}
+	bspc {quit,wm -r}
+
+super + {_,shift + }w
+	bspc node -{c,k}
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Preselect the direction
+super + ctrl + alt + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# Cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# Cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# HARDWARE MEDIA CONTROLS	
+XF86AudioPlay
+  playerctl play-pause
+
+XF86AudioNext
+  playerctl next
+  
+XF86AudioPrev
+  playerctl previous
+
+# APPLICATIONS KEY BINDINGS
+
+super + Return
+	alacritty
+
+super + @space
+	dmenu_run
+
+super + comma
+	rofi -show drun
+
+super + 0
+	systemctl poweroff
+
+super + 8
+	systemctl reboot
+
+alt + 1
+	google-chrome-stable
+
+alt + 2
+	code-oss
+
+alt + 3
+	figma-linux
+
+alt + 4
+	spotify
+
+alt + 5
+	virtualbox
+
+alt + 6
+	firefox
+
+alt + 7
+	atom
+
+alt + 8
+	leafpad
+
+alt + 9
+	pcmanfm
+
+alt + 0
+	alacritty -e $HOME/.local/bin/vifmrun
+
+alt + c
+	galculator
