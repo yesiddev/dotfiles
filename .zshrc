@@ -2,7 +2,7 @@
 
 # Default folders
 export XDG_CONFIG_HOME="$HOME/.config"
-export QT_STYLE_OVERRIDE=kvantum
+#export QT_STYLE_OVERRIDE=kvantum
 export ZPLUG_HOME="$XDG_CONFIG_HOME/zsh/zplug"
 
 # Language
@@ -26,38 +26,13 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob nomatch notify
+setopt extendedglob nomatch notify
 precmd () {print -Pn "\e]0;%c\a"}
 
-### Aliases ###
-source ~/.config/zsh/aliases.zsh
-
-### Plugins ###
-if [[ ! -d $ZPLUG_HOME ]]; then
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
-  source "$ZPLUG_HOME/init.zsh" && zplug update --self
-fi
-source "$ZPLUG_HOME/init.zsh"
-
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug 'hlissner/zsh-autopair', defer:2
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load 
-
-### Prompt ###
-#autoload -U promptinit; promptinit
-#prompt spaceship
-source ~/.config/zsh/zprompt.zsh
+### Custom Settings ##
+source $XDG_CONFIG_HOME/zsh/plugins.zsh
+source $XDG_CONFIG_HOME/zsh/zprompt.zsh
+source $XDG_CONFIG_HOME/zsh/aliases.zsh
 
 ### Completion system ###
 zstyle :compinstall filename '/home/yesidd/.zshrc'

@@ -13,23 +13,26 @@ alias vim='nvim'
 alias pj='cd $HOME/Projects'
 alias dw='cd $HOME/Downloads'
 alias dd='cd $HOME/Documents'
-alias pjr='cd $HOME/Projects/_repos'
-alias pjp='cd $HOME/Projects/_practice'
+alias pr='cd $HOME/Projects/_repos'
+alias pp='cd $HOME/Projects/_practice'
 
 # Dotfiles
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dota='dot add'
-alias dotc='dot commit -m'
-alias dotp='dot push'
-alias dots='dot status'
+alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dga='dg add'
+alias dgc='dg commit -m'
+alias dgp='dg push'
+alias dgs='dg status'
 
 # Config files
 alias :alacritty='v ~/.config/alacritty/alacritty.yml'
 alias :alias='v ~/.config/zsh/aliases.zsh'
+alias :bspwm='v ~/.config/bspwm/bspwmrc'
 alias :nvim='v ~/.config/nvim/init.vim'
-alias :prompt='v ~/.config/zsh/zprompt.zsh'
+alias :qtile='v ~/.config/qtile/config.py'
+alias :sxhkd='v ~/.config/sxhkd/sxhkdrc'
+alias :zplug='v ~/.config/zsh/plugins.zsh'
+alias :zprompt='v ~/.config/zsh/zprompt.zsh'
 alias :zsh='v ~/.zshrc'
-alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
 
 # Git
 alias g='git'
@@ -51,7 +54,7 @@ alias yayi='yay -S --noconfirm'
 alias yayr='yay -Rns --noconfirm'
 alias yayu='yay -Syu --noconfirm'
 
-# Handle file management
+# File management
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -65,6 +68,7 @@ alias fonts='fc-cache -f -v'
 alias reset='cd ~; clear; source ~/.zshrc'
 alias mine='chmod -R a-x,o-w,+X'
 alias modx='chmod +x'
+alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
 
 # NPM
 alias ni='npm install'
