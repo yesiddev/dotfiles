@@ -1,7 +1,7 @@
 [global]
   monitor = 0
   follow = mouse
-  geometry = "250x5-10+30"
+  geometry = "0x0-10+30"
   indicate_hidden = yes
   transparency = 0
   notification_height = 2
@@ -53,13 +53,13 @@
 [urgency_low]
   msg_urgency = low
   background = "#3B4252"
-  foreground = "#4C566A"
+  foreground = "#D8DEE9"
   timeout = 5
   icon = /home/yesidd/.config/dunst/notification.svg
 
 [urgency_normal]
   msg_urgency = normal
-  background = "#434C5E50"
+  background = "#434C5E"
   foreground = "#E5E9F0"
   timeout = 5
   icon = /home/yesidd/.config/dunst/notification.svg

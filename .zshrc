@@ -14,9 +14,6 @@ export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='google-chrome-stable'
 
-# Path
-export PATH=/usr/local/bin:/opt/local/bin:$HOME/bin:$HOME/.local/bin:$PATH
-
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -26,7 +23,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt extendedglob nomatch notify
+setopt autocd extendedglob nomatch notify
 precmd () {print -Pn "\e]0;%c\a"}
 
 ### Custom Settings ##

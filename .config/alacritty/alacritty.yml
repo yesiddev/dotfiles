@@ -1,9 +1,5 @@
 # Window style
 window:
-  dimensions:
-    columns: 80
-    lines: 40
-
   padding:
     x: 5
     y: 5
@@ -19,7 +15,7 @@ window.dynamic_title: true
 # Font
 font:
   normal:
-    family: JetBrains Mono
+    family: Input Mono Condensed
     style: Regular
 
   size: 13

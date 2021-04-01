@@ -2,6 +2,9 @@
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
+# Path
+export PATH=/usr/local/bin:/opt/local/bin:$HOME/bin:$HOME/.local/bin:$PATH
+
 # Screen
 $HOME/.screenlayout/display.sh &
 
@@ -13,9 +16,10 @@ xset s off
 # Default programs at start
 setxkbmap es &
 nm-applet &
-picom -f &
-udiskie -Nt &
 volumeicon &
-lxsession &
-feh --bg-fill ~/Wallpapers/the_simpsons.jpg &
 numlockx &
+lxsession &
+udiskie -Nt &
+feh --bg-fill ~/Pictures/Wallpapers/the_simpsons.jpg &
+picom -f &
+dunst &

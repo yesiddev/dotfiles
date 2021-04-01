@@ -57,33 +57,22 @@ keys = [Key(key[0], key[1], *key[2:]) for key in[
     # Launch essential apps
     ([mod], "Return", lazy.spawn(terminal)),
     ([mod], "comma", lazy.spawn("rofi -show drun")),
-    ([mod], "0", lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu")),
+    ([mod], "0", lazy.spawn("rofi -show power-menu -modi 'power-menu:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown --no-symbols'")),
 
     # Hardware Volumen and media controls
-    ([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 2")),
-    ([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 2")),
-    ([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
     ([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     ([], "XF86AudioNext", lazy.spawn("playerctl next")),
     ([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
 
     ### Apps
     (["mod1"], "1", lazy.spawn("google-chrome-stable")),
-    (["mod1"], "2", lazy.spawn("code-oss")),
-    (["mod1"], "3", lazy.spawn("figma-linux"), lazy.group["\uf5ae"].toscreen()),
-    (["mod1"], "4", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
-    (["mod1"], "5", lazy.spawn("virtualbox"), lazy.group["\uf381"].toscreen()),
+    (["mod1"], "2", lazy.spawn("figma-linux"), lazy.group["\uf5ae"].toscreen()),
+    (["mod1"], "3", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
+    (["mod1"], "4", lazy.spawn("virtualbox"), lazy.group["\uf381"].toscreen()),
     (["mod1"], "8", lazy.spawn("leafpad")),
     (["mod1"], "9", lazy.spawn("pcmanfm")),
-    (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun"), lazy.group["\uf07b"].toscreen()),
+    (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun")),
     (["mod1"], "c", lazy.spawn("galculator")),
-
-    ### Config Files
-    ([mod, "mod1"], "a", lazy.spawn(terminal+" -e nvim .config/alacritty/alacritty.yml")),
-    ([mod, "mod1"], "p", lazy.spawn(terminal+" -e nvim .config/zsh/zprompt.zsh")),
-    ([mod, "mod1"], "q", lazy.spawn(terminal+" -e nvim .config/qtile/config.py")),
-    ([mod, "mod1"], "v", lazy.spawn(terminal+" -e nvim .config/nvim/init.vim")),
-    ([mod, "mod1"], "z", lazy.spawn(terminal+" -e nvim ~/.zshrc")),
 ]]
 
 groups = [Group(i) for i in [
@@ -101,10 +90,18 @@ for i, group in enumerate(groups):
         Key([mod, "shift"], actual_key, lazy.window.togroup(group.name))
     ])
 
+colors = [
+        ["#f4f5f9", "#f4f5f9"], # Primary
+        ["#1c140d", "#1c140d"], # Primary Alt
+        ["#f1404b", "#f1404b"], # Accent
+        ["#252c41", "#252c41"], # Secondary
+        ["#9b9ca1", "#9b9ca1"], # Secondaty Alt
+        ]
+
 layout_conf = {
-    "border_width": 1,
+    "border_width": 2,
     "margin": 4,
-    "border_focus": "#c03c3c",
+    "border_focus": colors[2],
     }
 
 layouts = [
@@ -123,16 +120,8 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-colors = [
-        ["#f4f5f9", "#f4f5f9"], # Primary
-        ["#1c140d", "#1c140d"], # Primary Alt
-        ["#f1404b", "#f1404b"], # Accent
-        ["#252c41", "#252c41"], # Secondary
-        ["#9b9ca1", "#9b9ca1"], # Secondaty Alt
-        ]
-
 widget_defaults = dict(
-    font = 'Noto Sans Medium',
+    font = 'Input Mono Compressed Medium',
     fontsize = 14,
     background = colors[1],
     foreground = colors[0]
@@ -157,10 +146,12 @@ screens = [
                     this_screen_border = colors[4],
                     other_current_screen_border = colors[1],
                     other_screen_border = colors[1],
+                    hide_unused = True,
                     disable_drag = True
                     ),
                 widget.Prompt(),
                 widget.WindowName(
+                    format = '{class}',
                     background = colors[1],
                     foreground = colors[0],
                     padding = 8
