@@ -5,7 +5,6 @@ repo=$(basename "$PWD")
 
 {
 git init
-echo "# My $repo Repository" > README.md
 git add .
 git commit -m "initial commit -setup with script"
 git branch -M main

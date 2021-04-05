@@ -1,182 +1,181 @@
 # -*- coding: utf-8 -*-
-
-import os
-import re
-import socket
-import subprocess
-
-from typing import List  # noqa: F401
-
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
-from libqtile.lazy import lazy
 from libqtile import qtile
+from typing import List  # noqa: F401
+from libqtile import bar, layout, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.lazy import lazy
 
-mod = "mod4"                # Set SUPER/WINDOWS 
-terminal = "alacritty"      # Default terminal
+mod = "mod4"
+terminal = "alacritty"
 
-keys = [Key(key[0], key[1], *key[2:]) for key in[
-    ### Window Essentials
-
+# ----- KEY BINDINGS -----
+keys = [
     # Switch between windows
-    ([mod], "h", lazy.layout.left()),
-    ([mod], "l", lazy.layout.right()),
-    ([mod], "j", lazy.layout.down()),
-    ([mod], "k", lazy.layout.up()),
-    ([mod], "space", lazy.layout.next()),
+    Key([mod], "h", lazy.layout.left()),
+    Key([mod], "l", lazy.layout.right()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.up()),
+    Key([mod], "space", lazy.layout.next()),
 
-    # Moving windows in current stack
-    ([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    ([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    ([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    ([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    # Moe windows in current stack
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
 
-    # Grow windows
-    ([mod, "control"], "h", lazy.layout.grow_left()),
-    ([mod, "control"], "j", lazy.layout.grow_down()),
-    ([mod, "control"], "k", lazy.layout.grow_up()),
-    ([mod, "control"], "l", lazy.layout.grow_right()),
-    ([mod], "n", lazy.layout.normalize()),  # Reset all window sizes
+    # Grow windows 
+    Key([mod, "control"], "h", lazy.layout.grow_left()),
+    Key([mod, "control"], "l", lazy.layout.grow_right()),
+    Key([mod, "control"], "j", lazy.layout.grow_down()),
+    Key([mod, "control"], "k", lazy.layout.grow_up()),
+    Key([mod], "n", lazy.layout.normalize()),  # Reset window sizes
 
-    # Toggle split/unsplit sides
-    ([mod, "shift"], "Return", lazy.layout.toggle_split()),
+    # Toggle between split and unsplit sides of stack.
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+
+    # Toggle between different layouts as defined below
+    Key([mod], "Tab", lazy.next_layout()),
+
+    # Qtile Essentials
+    Key([mod], "w", lazy.window.kill()),
+    Key([mod, "control"], "r", lazy.restart()),
+    Key([mod, "control"], "q", lazy.shutdown()),
+    Key([mod], "r", lazy.spawncmd()),
 
     # Toggle window states
-    ([mod, "shift"], "f", lazy.window.toggle_floating()),       # Floating
-    ([mod, "shift"], "m", lazy.window.toggle_fullscreen()),     # Full Screen
+    Key([mod, "shift"], "f", lazy.window.toggle_floating()),
+    Key([mod, "shift"], "m", lazy.window.toggle_fullscreen()),
 
-    # Toggle between layouts
-    ([mod], "Tab", lazy.next_layout()),
-
-    # Qtile essentials
-    ([mod], "w", lazy.window.kill()),           # Kill window
-    ([mod, "control"], "r", lazy.restart()),    # Restart Qtile
-    ([mod, "control"], "q", lazy.shutdown()),   # Shutdown Qtile
-    ([mod], "r", lazy.spawncmd()),              # Prompt Widget
-
-    # Launch essential apps
-    ([mod], "Return", lazy.spawn(terminal)),
-    ([mod], "comma", lazy.spawn("rofi -show drun")),
-    ([mod], "0", lazy.spawn("rofi -show power-menu -modi 'power-menu:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown --no-symbols'")),
+    # Essential Apps
+    Key([mod], "Return", lazy.spawn(terminal)),
+    Key([mod], "comma", lazy.spawn("rofi -show drun")),
+    Key([mod], "s", lazy.spawn("rofi -show power-menu -modi 'power-menu:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown'")),
 
     # Hardware Volumen and media controls
-    ([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
-    ([], "XF86AudioNext", lazy.spawn("playerctl next")),
-    ([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
 
-    ### Apps
-    (["mod1"], "1", lazy.spawn("google-chrome-stable")),
-    (["mod1"], "2", lazy.spawn("figma-linux"), lazy.group["\uf5ae"].toscreen()),
-    (["mod1"], "3", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
-    (["mod1"], "4", lazy.spawn("virtualbox"), lazy.group["\uf381"].toscreen()),
-    (["mod1"], "8", lazy.spawn("leafpad")),
-    (["mod1"], "9", lazy.spawn("pcmanfm")),
-    (["mod1"], "0", lazy.spawn(terminal+" -e vifmrun")),
-    (["mod1"], "c", lazy.spawn("galculator")),
-]]
+    # Apps Keys
+    Key(["mod1"], "1", lazy.spawn("google-chrome-stable")),
+    Key(["mod1"], "2", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
+    Key(["mod1"], "3", lazy.spawn(terminal+" -e vifmrun")),
+    Key(["mod1"], "4", lazy.spawn("pcmanfm")),
+    Key(["mod1"], "5", lazy.spawn("figma-linux")),
+    Key(["mod1"], "6", lazy.spawn("firefox")),
+    Key(["mod1"], "7", lazy.spawn("transmission-gtk")),
+    Key(["mod1"], "8", lazy.spawn("Qalculate!")),
+]
 
-groups = [Group(i) for i in [
-    "\uf268", # 
-    "\uf121", # 
-    "\uf5ae", # 
-    "\uf144", # 
-    "\uf381", # 
-]]
+# ----- GROUPS -----
+groups_names = [
+    ("\uf015", {'layout': 'columns'}), # 
+    ("\uf121", {'layout': 'monadtall', 'matches': [Match(wm_class=["atom", "code-oss"])]}), # 
+    ("\uf5ae", {'layout': 'max', 'matches': [Match(wm_class=["figma-linux", "gimp"])]}), # 
+    ("\uf144", {'layout': 'columns', 'matches': [Match(wm_class=["vlc"])]}), # 
+    ("\uf382", {'layout': 'floating', 'matches': [Match(wm_class=["VirtualBox Manager"])]}) # 
+]
+
+groups = [Group(name, **kwargs) for name, kwargs in groups_names]
 
 for i, group in enumerate(groups):
-    actual_key = str(i + 1)
+    actual = str(i + 1)
     keys.extend([
-        Key([mod], actual_key, lazy.group[group.name].toscreen()),
-        Key([mod, "shift"], actual_key, lazy.window.togroup(group.name))
+        # mod1 + number = switch to group
+        Key([mod], actual, lazy.group[group.name].toscreen()),
+
+        # mod1 + shift + number = switch to & move focused window to group
+        Key([mod, "shift"], actual, lazy.window.togroup(group.name, switch_group=True)),
     ])
 
-colors = [
-        ["#f4f5f9", "#f4f5f9"], # Primary
-        ["#1c140d", "#1c140d"], # Primary Alt
-        ["#f1404b", "#f1404b"], # Accent
-        ["#252c41", "#252c41"], # Secondary
-        ["#9b9ca1", "#9b9ca1"], # Secondaty Alt
-        ]
-
-layout_conf = {
+# ----- LAYOUTS -----
+layout_config = {
     "border_width": 2,
     "margin": 4,
-    "border_focus": colors[2],
-    }
+    "border_focus": "#5494e2"
+}
 
 layouts = [
-    layout.Columns(**layout_conf),
-    layout.MonadTall(**layout_conf),
-    layout.MonadWide(**layout_conf),
-    layout.Max(**layout_conf),
-    layout.Tile(shift_windows=True, **layout_conf),
-    layout.Bsp(**layout_conf),
-    # layout.Stack(num_stacks=2),
+    layout.Columns(**layout_config),
+    layout.MonadTall(**layout_config),
+    layout.Max(**layout_config),
+    layout.Floating(**layout_config),
     # Try more layouts by unleashing below layouts.
-    # layout.TreeTab(),
+    # layout.Stack(num_stacks=2),
+    # layout.Bsp(),
     # layout.Matrix(),
+    # layout.MonadWide(),
     # layout.RatioTile(),
+    # layout.Tile(),
+    # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
+# ----- WIDGETS -----
+colors = [
+    ["#404552", "#404552"], # base dark
+    ["#ffffff", "#ffffff"], # base light
+    ["#3b3e45", "#3b3e45"], # text dark
+    ["#d3dae3", "#d3dae3"], # text light
+    ["#383c4a", "#383c4a"], # bg dark
+    ["#f5f6f7", "#f5f6f7"], # bg light
+    ["#5294e2", "#5294e2"], # selected
+    ["#f27835", "#f27835"], # warning
+    ["#fc4138", "#fc4138"], # error
+    ["#73d216", "#73d216"]  # success
+]
+
 widget_defaults = dict(
-    font = 'Input Mono Compressed Medium',
+    font = 'Dejavu Sans Mono',
     fontsize = 14,
-    background = colors[1],
-    foreground = colors[0]
+    padding = 3,
+    background = colors[4],
+    foreground = colors[3]
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.CurrentLayoutIcon(
+                    scale = 0.6
+                ),
                 widget.GroupBox(
-                    fontsize = 16,
                     borderwidth = 1,
-                    active = colors[0],
-                    inactive = colors[4],
+                    active = colors[1],
+                    inactive = colors[0],
                     rounded = False,
-                    highlight_color = colors[2],
-                    block_highlight_text_color = colors[0],
+                    highlight_color = colors[6],
+                    block_highlight_text_color = colors[1],
                     highlight_method = 'line',
-                    urgent_border = colors[3],
-                    this_current_screen_border = colors[2],
-                    this_screen_border = colors[4],
-                    other_current_screen_border = colors[1],
-                    other_screen_border = colors[1],
+                    urgent_border = colors[7],
+                    this_current_screen_border = colors[6],
+                    this_screen_border = colors[5],
+                    other_current_screen_border = colors[4],
+                    other_screen_border = colors[4],
                     hide_unused = True,
                     disable_drag = True
-                    ),
+                ),
                 widget.Prompt(),
-                widget.WindowName(
-                    format = '{class}',
-                    background = colors[1],
-                    foreground = colors[0],
-                    padding = 8
-                    ),
-                widget.CurrentLayout(
-                    padding = 8,
-                    foreground = colors[0]
-                    ),
+                widget.WindowName(),
                 widget.CheckUpdates(
                     distro = "Arch",
-                    colour_have_updates = colors[2],
-                    colour_no_updates = colors[0],
-                    display_format = "\uf021",
-                    foreground = colors[2],
-                    update_interval = 3000,
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu --noconfirm')}
-                    ),
+                    colour_have_updates = colors[8],
+                    colour_no_updates = colors[3],
+                    display_format = "\uf021 {updates}",
+                    update_interval = 1600,
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal+' -e sudo pacman -Syu --noconfirm')}
+                ),
                 widget.Systray(
                     padding = 8
-                    ),
+                ),
                 widget.Clock(
                     format = '%I:%M %p',
-                    padding = 8,
-                    fontsize = 16
-                    ),
+                    padding = 8
+                ),
             ],
             24,
         ),
@@ -194,9 +193,10 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-follow_mouse_focus = False
+follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
+
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
@@ -208,15 +208,18 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='pcmanfm'),
     Match(wm_class='leafpad'),
-    Match(wm_class='lxappearance'),
-    Match(wm_class='galculator'),
+    Match(wm_class='Qalculate!'),
     Match(wm_class='vlc'),
     Match(wm_class='pavucontrol'),
     Match(wm_class='sxiv'),
     Match(wm_class='file-roller'),
+    Match(wm_class='VirtualBox Manager'),
+    Match(wm_class='Lightdm-gtk-greeter-settings'),
 ])
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+reconfigure_screens = True
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

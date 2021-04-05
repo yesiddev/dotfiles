@@ -5,8 +5,9 @@ if [[ ! -d $ZPLUG_HOME ]]; then
 fi
 source "$ZPLUG_HOME/init.zsh"
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug 'hlissner/zsh-autopair', defer:2
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "hlissner/zsh-autopair", defer:2
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # Install plugins if there are plugins that have not been installed

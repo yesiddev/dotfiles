@@ -1,13 +1,14 @@
-# LS
+# Directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
 alias ls='ls --color=auto --group-directories-first'
-alias ll='ls -l'
 alias la='ls -lavh'
+alias ll='ls -l'
 
 # Editor
-alias sv='sudoedit'
-alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+alias sv='sudoedit'
 
 # Directories
 alias pj='cd $HOME/Projects'
@@ -16,24 +17,16 @@ alias dd='cd $HOME/Documents'
 alias pr='cd $HOME/Projects/_repos'
 alias pp='cd $HOME/Projects/_practice'
 
-# Dotfiles
-alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dga='dg add'
-alias dgc='dg commit -m'
-alias dgp='dg push'
-alias dgs='dg status'
-
 # Config files
-alias :alacritty='v ~/.config/alacritty/alacritty.yml'
-alias :alias='v ~/.config/zsh/aliases.zsh'
-alias :bspwm='v ~/.config/bspwm/bspwmrc'
-alias :kitty='v ~/.config/kitty/kitty.conf'
-alias :nvim='v ~/.config/nvim/init.vim'
-alias :qtile='v ~/.config/qtile/config.py'
-alias :sxhkd='v ~/.config/sxhkd/sxhkdrc'
-alias :zplug='v ~/.config/zsh/plugins.zsh'
-alias :zprompt='v ~/.config/zsh/zprompt.zsh'
-alias :zsh='v ~/.zshrc'
+alias :alacritty='vim ~/.config/alacritty/alacritty.yml'
+alias :aliases='vim ~/.config/zsh/aliases.zsh'
+alias :bspwm='vim ~/.config/bspwm/bspwmrc'
+alias :prompt='vim ~/.config/zsh/prompt.zsh'
+alias :qtile='vim ~/.config/qtile/config.py'
+alias :sxhkd='vim ~/.config/sxhkd/sxhkdrc'
+alias :vim='vim ~/.config/nvim/init.vim'
+alias :zplug='vim ~/.config/zsh/plugins.zsh'
+alias :zsh='vim ~/.zshrc'
 
 # Git
 alias g='git'
@@ -43,12 +36,19 @@ alias gc='git commit -m'
 alias gp='git push'
 alias gpl='git pull'
 
+# dotfiles
+alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dga='dg add'
+alias dgc='dg commit -m'
+alias dgp='dg push'
+alias dgs='dg status'
+
 # Pacman
 alias paci='sudo pacman -S --needed --noconfirm'
 alias pacu='sudo pacman -Syu --noconfirm'
 alias pacr='sudo pacman -Rsn --noconfirm'
 alias pacro='sudo pacman -Rs $(pacman -Qtdq) --noconfirm'
-alias pacls='sudo pacman -Ql'
+alias pacls='sudo pacman -Qe'
 
 # Yay
 alias yayi='yay -S --noconfirm'
@@ -62,6 +62,8 @@ alias mv='mv -i'
 alias md='mkdir -p'
 alias rd='rm -rf'
 alias vf='vifmrun'
+alias trash='gio trash '
+alias empty_trash='gio trash --empty'
 
 # System utilities
 alias c='clear'
