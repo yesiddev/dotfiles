@@ -3,7 +3,7 @@
   follow = mouse
   geometry = "0x0-10+30"
   indicate_hidden = yes
-  transparency = 10
+  transparency = 30
   notification_height = 2
   padding = 8
   horizontal_padding = 8
@@ -47,7 +47,7 @@
 [shortcuts]
   close = ctrl+space
   close_all = ctrl+shift+space
-  history = ctrl+comma
+  history = ctrl+grave
   context = ctrl+shift+period
 
 [urgency_low]

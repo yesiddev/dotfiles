@@ -86,9 +86,6 @@ super + @space
 super + comma
 	rofi -show drun
 
-super + 0
-	systemctl poweroff
-
 super + 8
 	systemctl reboot
 
@@ -96,31 +93,28 @@ alt + 1
 	google-chrome-stable
 
 alt + 2
-	code-oss
+	firefox
 
 alt + 3
-	figma-linux
+	opera
 
 alt + 4
 	spotify
 
 alt + 5
-	virtualbox
+	figma-linux
 
 alt + 6
-	firefox
+	code-oss
 
 alt + 7
-	atom
-
-alt + 8
-	leafpad
-
-alt + 9
 	pcmanfm
 
-alt + 0
-	alacritty -e $HOME/.local/bin/vifmrun
+alt + 8
+	alacritty -e vifmrun
 
-alt + c
-	galculator
+alt + 9
+	VirtualBox Manager	
+
+alt + 0
+	qalculate-gtk

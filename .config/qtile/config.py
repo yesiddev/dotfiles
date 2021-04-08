@@ -49,7 +49,7 @@ keys = [
     # Essential Apps
     Key([mod], "Return", lazy.spawn(terminal)),
     Key([mod], "comma", lazy.spawn("rofi -show drun")),
-    Key([mod], "s", lazy.spawn("rofi -show power-menu -modi 'power-menu:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown'")),
+    Key([mod], "0", lazy.spawn("rofi -show power-menu -modi 'power-menu:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown'")),
 
     # Hardware Volumen and media controls
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
@@ -58,19 +58,21 @@ keys = [
 
     # Apps Keys
     Key(["mod1"], "1", lazy.spawn("google-chrome-stable")),
-    Key(["mod1"], "2", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
-    Key(["mod1"], "3", lazy.spawn(terminal+" -e vifmrun")),
-    Key(["mod1"], "4", lazy.spawn("pcmanfm")),
+    Key(["mod1"], "2", lazy.spawn("firefox")),
+    Key(["mod1"], "3", lazy.spawn("Opera")),
+    Key(["mod1"], "4", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
     Key(["mod1"], "5", lazy.spawn("figma-linux")),
-    Key(["mod1"], "6", lazy.spawn("firefox")),
-    Key(["mod1"], "7", lazy.spawn("transmission-gtk")),
-    Key(["mod1"], "8", lazy.spawn("Qalculate!")),
+    Key(["mod1"], "6", lazy.spawn("code-oss")),
+    Key(["mod1"], "7", lazy.spawn("pcmanfm")),
+    Key(["mod1"], "8", lazy.spawn(terminal+" -e vifmrun")),
+    Key(["mod1"], "9", lazy.spawn("VirtualBox Manager")),
+    Key(["mod1"], "0", lazy.spawn("qalculate-gtk")),
 ]
 
 # ----- GROUPS -----
 groups_names = [
-    ("\uf015", {'layout': 'columns'}), # 
-    ("\uf121", {'layout': 'monadtall', 'matches': [Match(wm_class=["atom", "code-oss"])]}), # 
+    ("\uf015", {'layout': 'monadtall'}), # 
+    ("\uf121", {'layout': 'columns', 'matches': [Match(wm_class=["subl3","atom", "code-oss"])]}), # 
     ("\uf5ae", {'layout': 'max', 'matches': [Match(wm_class=["figma-linux", "gimp"])]}), # 
     ("\uf144", {'layout': 'columns', 'matches': [Match(wm_class=["vlc"])]}), # 
     ("\uf382", {'layout': 'floating', 'matches': [Match(wm_class=["VirtualBox Manager"])]}) # 
@@ -127,7 +129,7 @@ colors = [
 ]
 
 widget_defaults = dict(
-    font = 'Dejavu Sans Mono',
+    font = 'Roboto Medium',
     fontsize = 14,
     padding = 3,
     background = colors[4],
@@ -156,7 +158,7 @@ screens = [
                     this_screen_border = colors[5],
                     other_current_screen_border = colors[4],
                     other_screen_border = colors[4],
-                    hide_unused = True,
+                    # hide_unused = True,
                     disable_drag = True
                 ),
                 widget.Prompt(),
@@ -208,13 +210,14 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='pcmanfm'),
     Match(wm_class='leafpad'),
-    Match(wm_class='Qalculate!'),
+    Match(wm_class='Qalculate-gtk'),
     Match(wm_class='vlc'),
     Match(wm_class='pavucontrol'),
     Match(wm_class='sxiv'),
     Match(wm_class='file-roller'),
     Match(wm_class='VirtualBox Manager'),
     Match(wm_class='Lightdm-gtk-greeter-settings'),
+    Match(wm_class='transmission-gtk'),
 ])
 
 auto_fullscreen = True

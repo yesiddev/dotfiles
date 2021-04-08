@@ -8,7 +8,7 @@ alias ll='ls -l'
 # Editor
 alias vi='nvim'
 alias vim='nvim'
-alias sv='sudoedit'
+alias sv='sudo vim'
 
 # Directories
 alias pj='cd $HOME/Projects'
@@ -72,6 +72,7 @@ alias reset='cd ~; clear; source ~/.zshrc'
 alias mine='chmod -R a-x,o-w,+X'
 alias modx='chmod +x'
 alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
+alias mirrors='sudo reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Sy'
 
 # NPM
 alias ni='npm install'

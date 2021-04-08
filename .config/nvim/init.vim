@@ -34,7 +34,6 @@ Plug 'ap/vim-css-color'
 " ui
 Plug 'itchyny/lightline.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug '~/Projects/_repos/vim-colors'
 
 call plug#end()
 
@@ -150,4 +149,4 @@ vnoremap <A-k> :m '<-2'<cr>
 nnoremap <leader>t :NERDTreeToggle<cr>
 
 " Emmet
-let g:user_emmet_leader_key='<C-M>'
+let g:user_emmet_leader_key='<C-m>'

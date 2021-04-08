@@ -15,7 +15,7 @@ window.dynamic_title: true
 # Font
 font:
   normal:
-    family: Input Mono Condensed
+    family: JetBrains Mono
     style: Regular
 
   size: 12
