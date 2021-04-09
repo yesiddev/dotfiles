@@ -8,12 +8,12 @@ alias ll='ls -l'
 # Editor
 alias vi='nvim'
 alias vim='nvim'
-alias sv='sudo vim'
+alias sv='sudoedit'
 
 # Directories
-alias pj='cd $HOME/Projects'
 alias dw='cd $HOME/Downloads'
 alias dd='cd $HOME/Documents'
+alias pj='cd $HOME/Projects'
 alias pr='cd $HOME/Projects/_repos'
 alias pp='cd $HOME/Projects/_practice'
 
@@ -69,7 +69,7 @@ alias empty_trash='gio trash --empty'
 alias c='clear'
 alias fonts='fc-cache -f -v'
 alias reset='cd ~; clear; source ~/.zshrc'
-alias mine='chmod -R a-x,o-w,+X'
+alias modr='chmod -R a-x,o-w,+X'
 alias modx='chmod +x'
 alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
 alias mirrors='sudo reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Sy'

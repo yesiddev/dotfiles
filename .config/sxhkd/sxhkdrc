@@ -47,7 +47,7 @@ super + {_,shift + }w
 	bspc node -{c,k}
 
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Config reloaded"
 
 # Preselect the direction
 super + ctrl + alt + {h,j,k,l}
@@ -86,35 +86,8 @@ super + @space
 super + comma
 	rofi -show drun
 
-super + 8
-	systemctl reboot
+super + shift + {r,s,x}
+	{reboot,poweroff,light-locker-command -l}
 
-alt + 1
-	google-chrome-stable
-
-alt + 2
-	firefox
-
-alt + 3
-	opera
-
-alt + 4
-	spotify
-
-alt + 5
-	figma-linux
-
-alt + 6
-	code-oss
-
-alt + 7
-	pcmanfm
-
-alt + 8
-	alacritty -e vifmrun
-
-alt + 9
-	VirtualBox Manager	
-
-alt + 0
-	qalculate-gtk
+alt + {1,2,3,4,5,6,7,8,9,0}
+	{google-chrome-stable,firefox,opera,spotify,figma-linux,code-oss,pcmanfm,alacritty -e vifmrun,VirtualBox Manager,qalculate-gtk}

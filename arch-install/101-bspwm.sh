@@ -70,6 +70,7 @@ python2
 ueberzug
 xclip
 yq
+zsh-syntax-highlithting
 )
 
 utilities=(
@@ -108,36 +109,33 @@ git clone https://aur.archlinux.org/yay.git &>/dev/null
 cd yay
 makepkg -sirc --noconfirm &>/dev/null
 cd $HOME
-rm -rf yay
-echo "    $(tput setaf 2)+ $(tput sgr0)Instalador de paquetes YAY"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]AUR Helper: YAY"
 
 pacman -S --needed --noconfirm ${video[@]} &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Drivers de video"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Drivers de video"
 pacman -S --needed --noconfirm ${audio[@]} &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Drivers de audio"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Drivers de audio"
 pacman -S --needed --noconfirm ${dewm[@]} &>/dev/null
 yay -S --noconfirm polybar &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Window manager y paquetes necesarios"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Window manager y paquetes necesarios"
 pacman -S --needed --noconfirm ${fonts[@]} &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Fuentes necesarias"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Fuentes necesarias"
 pacman -S --needed --noconfirm ${console[@]} &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Utilidades para la terminal"
+yay -S --noconfirm spaceship-prompt-git &>/dev/null
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Utilidades para la terminal"
 pacman -S --needed --noconfirm ${files[@]} &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Utilidades para el manejo de archivos"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Utilidades para el manejo de archivos"
 pacman -S --needed --noconfirm ${utilities[@]} &>/dev/null
 yay -S --noconfirm figma-linux &>/dev/null
 yay -S --noconfirm spotify &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Otros paquetes"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Utilidades de oficina y entretenimiento"
 pacman -S --needed --noconfirm ${appearance[@]} &>/dev/null
-echo "    $(tput setaf 2)+ $(tput sgr0)Utilidades para la apariencia"
-
-sudo systemctl enable lightdm &>/dev/null
-rm -rf ~/Downloads/yay
-sudo modprobe vboxdrv
-echo "    $(tput setaf 2)+ $(tput sgr0)Configuraciones finales"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Utilidades para la apariencia"
 
 echo ""
-echo "El sistema esta casi listo, ahora necesitamos los dotfiles"
+echo "Configurando: ..."
+sudo systemctl enable lightdm &>/dev/null
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Lightdm inicializado"
 
 # Git config
 git config --global user.name yesiddev
@@ -145,15 +143,15 @@ git config --global user.email yesiddgarzon@gmail.com
 git config --global color.ui true
 git config --global core.editor nvim
 git config --global init.defaultBranch main
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Git configurado"
 
-# Clone dotfiles
-cd $HOME
-mkdir .dotfiles
-git clone --bare https://github.com/yesiddev/dotfiles.git $HOME/.dotfiles
-/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
-/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
+rm -rf ~/yay
+sudo modprobe vboxdrv
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)]Confiduraciones finales"
 
 echo ""
 echo "$(tput setaf 2)El sistema ha sido instalado con éxito"
-read -p "$(tput sgr0)Presiona Enter para salir y reinicia"
+echo ""
+echo "$(tput sgr0)Ahora puedes instalar otro entorno o instalar los dotfiles"
+read -p "$(tput sgr0)Presiona Enter para salir"
 }

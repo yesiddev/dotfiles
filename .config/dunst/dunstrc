@@ -3,7 +3,7 @@
   follow = mouse
   geometry = "0x0-10+30"
   indicate_hidden = yes
-  transparency = 30
+  transparency = 15
   notification_height = 2
   padding = 8
   horizontal_padding = 8

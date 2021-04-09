@@ -218,6 +218,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='VirtualBox Manager'),
     Match(wm_class='Lightdm-gtk-greeter-settings'),
     Match(wm_class='transmission-gtk'),
+    Match(wm_class='Nm-connection-editor'),
 ])
 
 auto_fullscreen = True

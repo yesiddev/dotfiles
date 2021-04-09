@@ -22,11 +22,10 @@ zsh
 )
 
 echo "Esto restablecerá el sistema a la instalación básica de Arch. Solo"
-echo "tendrás el sistema base, deberás instalar de nuevo tu WM o DE u otro"
-echo "diferente."
+echo "tendrás el sistema base, deberás instalar de nuevo tu WM o DE."
 echo ""
 echo "¿Seguro deseas continuar?"
-read -p "Presiona Enter para continuar o Ctrl+c para salir..."
+read -p "-- Presiona Enter para continuar o Ctrl+c para salir..."
 echo ""
 echo "Buena Suerte"
 sudo pacman -D --asdeps $(pacman -Qqe)

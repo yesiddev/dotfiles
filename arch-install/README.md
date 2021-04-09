@@ -13,7 +13,7 @@ Estos son mis scripts para la instalación de Arch Linux en mi computador.
 2. Ingresar el siguiente comando:
 
 ```bash
-sh -c "$(curl -sL https://raw.github.com/yesiddev/dotfiles/main/arch-install/100-install-base.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/yesiddev/dotfiles/main/arch-install/100-install-base.sh)"
 ```
 
 Con esto estará instalado un sistema base sin WM o DE, completamente funcional.
@@ -22,10 +22,10 @@ Con esto estará instalado un sistema base sin WM o DE, completamente funcional.
 
 Para Qtile:
 ```bash
-sh -c "$(curl -sL https://raw.github.com/yesiddev/dotfiles/main/arch-install/101-qtile.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/yesiddev/dotfiles/main/arch-install/101-qtile.sh)"
 ```
 
 Para bspwm:
 ```bash
-sh -c "$(curl -sL https://raw.github.com/yesiddev/dotfiles/main/arch-install/101-bspwm.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/yesiddev/dotfiles/main/arch-install/101-bspwm.sh)"
 ```
