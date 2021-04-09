@@ -70,7 +70,7 @@ python2
 ueberzug
 xclip
 yq
-zsh-syntax-highlithting
+zsh-syntax-highlighting
 )
 
 utilities=(
