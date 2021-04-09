@@ -1,27 +1,43 @@
+# ---- Global Settings -----
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
 # ---- Colors -----
 [colors]
-background = #26f4f5f9
-background-alt = #40f7f8fb
+background = #26f5f6f7
+background-alt = #40f5f6f7
 foreground = #ffffff
 foreground-alt = #40ffffff
+alert = #f27835
+
 
 # ----- Bar -----
 [bar/main]
+monitor = 
+monitor-fallback =
+monitor-strict = false
+override-redirect = false
+top = true
+fixed-center = true
 width = 100%
 height = 24
-fixed-center = true
-
+offset-x = 0%
+offset-y = 0%
 background = ${colors.background}
 foreground = ${colors.foreground}
-
+radius-top = 0.0
+radius-bottom = 0.0
 padding-right = 2
+module-margin-left = 0
+module-margin-right = 0
 
 font-0 = Roboto:style=Medium:size=11;2
-font-1 = Font Awesome 5 Free Solid:style=Regular:size=10;2
-font-2 = Font Awesome 5 Brands:style=Regular:size=10;2
+font-1 = Font Awesome 5 Free Solid:style=Regular:size=11;2
+font-2 = Font Awesome 5 Brands:style=Regular:size=11;2
 
 modules-left = workspaces title
-modules-center = 
+modules-center =
 modules-right = keyboard updates date
 
 tray-position = right
@@ -33,7 +49,6 @@ tray-padding = 6
 # Workspaces
 [module/workspaces]
 type = internal/xworkspaces
-
 pin-workspaces = true
 enable-click = true
 enable-scroll = false
@@ -49,20 +64,15 @@ format = <label-state>
 format-padding = 0
 
 label-monitor = %name%
-
 label-active = %icon%
 label-active-foreground = ${colors.foreground}
 label-active-background = ${colors.background-alt}
-
 label-occupied = %icon%
 label-occupied-foreground = ${colors.foreground}
-
 label-urgent = %icon%
 label-urgent-foreground = ${colors.alert}
-
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
-
 label-active-padding = 2
 label-urgent-padding = 2
 label-occupied-padding = 2
@@ -71,10 +81,11 @@ label-empty-padding = 2
 # Window title
 [module/title]
 type = internal/xwindow
-format-padding = 4
+format = <label>
+format-padding = 2
 label = %title%
 label-maxlen = 50
-label-empty = "Desktop"
+label-empty = Desktop
 
 # Num/Caps Lock Indicator
 [module/keyboard]
@@ -119,13 +130,11 @@ label = %date% %time%
 
 # ----- Settings -----
 [settings]
-screenchange-reload = true
+throttle-output = 5
+throttle-output-for = 10
+screenchange-reload = false
 pseudo-transparency = true
 override-redirect = true
 wm-restack = bspwm
-
-[global/wm]
-margin-top = 0
-margin-bottom = 0
 
 ; vim:ft=dosini
