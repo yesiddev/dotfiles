@@ -95,7 +95,8 @@ papirus-icon-theme
 )
 
 clear
-sudo pacman -S --needed --noconfirm git curl &>/dev/null
+sudo systemctl start reflector
+sudo pacman -Sy --needed --noconfirm git curl &>/dev/null
 clear
 echo "Instalación del entorno: bspwm"
 echo "-----------------------------------------------------"
@@ -111,25 +112,25 @@ makepkg -sirc --noconfirm &>/dev/null
 cd $HOME
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] AUR Helper: YAY"
 
-pacman -S --needed --noconfirm ${video[@]} &>/dev/null
+sudo pacman -S --needed --noconfirm ${video[@]} &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Drivers de video"
-pacman -S --needed --noconfirm ${audio[@]} &>/dev/null
+sudo pacman -S --needed --noconfirm ${audio[@]} &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Drivers de audio"
-pacman -S --needed --noconfirm ${dewm[@]} &>/dev/null
-yay -S --noconfirm polybar &>/dev/null
+sudo pacman -S --needed --noconfirm ${dewm[@]} &>/dev/null
+yay -Sy --noconfirm polybar &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Window manager y paquetes necesarios"
-pacman -S --needed --noconfirm ${fonts[@]} &>/dev/null
+sudo pacman -S --needed --noconfirm ${fonts[@]} &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Fuentes necesarias"
-pacman -S --needed --noconfirm ${console[@]} &>/dev/null
-yay -S --noconfirm spaceship-prompt-git &>/dev/null
+sudo pacman -S --needed --noconfirm ${console[@]} &>/dev/null
+yay -Sy --noconfirm spaceship-prompt-git &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Utilidades para la terminal"
-pacman -S --needed --noconfirm ${files[@]} &>/dev/null
+sudo pacman -S --needed --noconfirm ${files[@]} &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Utilidades para el manejo de archivos"
-pacman -S --needed --noconfirm ${utilities[@]} &>/dev/null
-yay -S --noconfirm figma-linux &>/dev/null
-yay -S --noconfirm spotify &>/dev/null
+sudo pacman -S --needed --noconfirm ${utilities[@]} &>/dev/null
+yay -Sy --noconfirm figma-linux &>/dev/null
+yay -Sy --noconfirm spotify &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Utilidades de oficina y entretenimiento"
-pacman -S --needed --noconfirm ${appearance[@]} &>/dev/null
+sudo pacman -S --needed --noconfirm ${appearance[@]} &>/dev/null
 echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Utilidades para la apariencia"
 
 echo ""
@@ -147,7 +148,7 @@ echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Git configurado"
 
 rm -rf ~/yay
 sudo modprobe vboxdrv
-echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Confiduraciones finales"
+echo "  [$(tput setaf 2)$(tput bold)+$(tput sgr0)] Configuraciones finales"
 
 echo ""
 echo "$(tput setaf 2)El sistema ha sido instalado con éxito"
