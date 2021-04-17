@@ -22,11 +22,13 @@ dewm=(
 alacritty
 feh
 firefox
+kitty
 light-locker
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
 lxsession
+pacman-contrib
 picom
 qtile
 rofi

@@ -45,7 +45,6 @@ alias dgs='dg status'
 
 # Pacman
 alias paci='sudo pacman -S --needed --noconfirm'
-alias pacu='sudo pacman -Syu --noconfirm'
 alias pacr='sudo pacman -Rsn --noconfirm'
 alias pacro='sudo pacman -Rs $(pacman -Qtdq) --noconfirm'
 alias pacls='sudo pacman -Qe'
@@ -62,7 +61,8 @@ alias mv='mv -i'
 alias md='mkdir -p'
 alias rd='rm -rf'
 alias vf='vifmrun'
-alias trash='gio trash '
+alias vifm='vifmrun'
+alias trash='gio trash'
 alias empty_trash='gio trash --empty'
 
 # System utilities
@@ -73,13 +73,3 @@ alias modr='chmod -R a-x,o-w,+X'
 alias modx='chmod +x'
 alias crsa='xclip -selection clipboard < ~/.ssh/id_rsa.pub'
 alias mirrors='sudo reflector --latest 10 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Sy'
-
-# NPM
-alias ni='npm install'
-alias nig='npm install -g'
-alias nis='npm install --save'
-alias nisd='npm install --save-dev'
-alias niu='npm install -g npm@latest'
-alias nu='npm update'
-alias nug='npm update -g'
-alias npmi='npm init -y'

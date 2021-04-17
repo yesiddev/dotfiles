@@ -23,6 +23,7 @@ alacritty
 bspwm
 feh
 firefox
+kitty
 light-locker
 lightdm
 lightdm-gtk-greeter

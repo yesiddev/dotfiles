@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
+import os
+import re
+import socket
+import subprocess
 from libqtile import qtile
 from typing import List  # noqa: F401
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 # ----- KEY BINDINGS -----
 keys = [
@@ -55,6 +59,10 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+
+    # System keys
+    Key([mod, "shift"], "r", lazy.spawn(terminal+" -e reboot")),
+    Key([mod, "shift"], "s", lazy.spawn(terminal+" -e poweroff")),
 
     # Apps Keys
     Key(["mod1"], "1", lazy.spawn("google-chrome-stable")),
@@ -132,8 +140,8 @@ widget_defaults = dict(
     font = 'Roboto Medium',
     fontsize = 14,
     padding = 3,
-    background = colors[4],
-    foreground = colors[3]
+    background = colors[5],
+    foreground = colors[2]
 )
 
 extension_defaults = widget_defaults.copy()
@@ -143,12 +151,13 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(
-                    scale = 0.6
+                    scale = 0.6,
+                    background = colors[2]
                 ),
                 widget.GroupBox(
                     borderwidth = 1,
-                    active = colors[1],
-                    inactive = colors[0],
+                    active = colors[2],
+                    inactive = colors[3],
                     rounded = False,
                     highlight_color = colors[6],
                     block_highlight_text_color = colors[1],
@@ -164,7 +173,7 @@ screens = [
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.CheckUpdates(
-                    distro = "Arch",
+                    distro = "Arch_checkupdates",
                     colour_have_updates = colors[8],
                     colour_no_updates = colors[3],
                     display_format = "\uf021 {updates}",

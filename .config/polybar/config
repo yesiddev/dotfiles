@@ -41,7 +41,8 @@ modules-center =
 modules-right = keyboard updates date
 
 tray-position = right
-tray-maxsize = 16
+tray-detached = false
+tray-maxsize = 20
 tray-background = ${colors.background}
 tray-padding = 6
 
@@ -84,7 +85,7 @@ type = internal/xwindow
 format = <label>
 format-padding = 2
 label = %title%
-label-maxlen = 50
+label-maxlen = 30
 label-empty = Desktop
 
 # Num/Caps Lock Indicator
@@ -134,7 +135,7 @@ throttle-output = 5
 throttle-output-for = 10
 screenchange-reload = false
 pseudo-transparency = true
-override-redirect = true
 wm-restack = bspwm
+override-redirect = true
 
 ; vim:ft=dosini

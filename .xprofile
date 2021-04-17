@@ -2,7 +2,8 @@
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-source ~/.zshrc
+# Path
+export PATH=/usr/local/bin:/opt/local/bin:$HOME/bin:$HOME/.local/bin:$PATH
 
 # Screen
 $HOME/.screenlayout/display.sh &
