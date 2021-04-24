@@ -12,7 +12,7 @@ alias sv='sudoedit'
 
 # Directories
 alias dw='cd $HOME/Downloads'
-alias dd='cd $HOME/Documents'
+alias dc='cd $HOME/Documents'
 alias pj='cd $HOME/Projects'
 alias pr='cd $HOME/Projects/_repos'
 alias pp='cd $HOME/Projects/_practice'
@@ -43,17 +43,6 @@ alias dga='dg add'
 alias dgc='dg commit -m'
 alias dgp='dg push'
 alias dgs='dg status'
-
-# Pacman
-alias paci='sudo pacman -S --needed --noconfirm'
-alias pacr='sudo pacman -Rsn --noconfirm'
-alias pacro='sudo pacman -Rs $(pacman -Qtdq) --noconfirm'
-alias pacls='sudo pacman -Qe'
-
-# Yay
-alias yayi='yay -S --noconfirm'
-alias yayr='yay -Rns --noconfirm'
-alias yayu='yay -Syu --noconfirm'
 
 # File management
 alias rm='rm -i'
