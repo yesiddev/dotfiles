@@ -3,9 +3,7 @@ window:
   padding:
     x: 5
     y: 5
-
   #decorations: none
-
 scrolling:
   history: 5000
   multiplier: 3
@@ -15,10 +13,10 @@ window.dynamic_title: true
 # Font
 font:
   normal:
-    family: JetBrains Mono
+    family: SF Mono Powerline
     style: Medium
 
-  size: 11
+  size: 12
   offset:
     x: 0
     y: 0

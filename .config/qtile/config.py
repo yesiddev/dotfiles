@@ -10,7 +10,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 
 # ----- KEY BINDINGS -----
 keys = [
@@ -52,7 +52,7 @@ keys = [
 
     # Essential Apps
     Key([mod], "Return", lazy.spawn(terminal)),
-    Key([mod], "comma", lazy.spawn("rofi -show drun")),
+    Key([mod], "space", lazy.spawn("rofi -show drun")),
     Key([mod], "0", lazy.spawn("rofi -show power-menu -modi 'power-menu:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown'")),
 
     # Hardware Volumen and media controls
@@ -67,20 +67,20 @@ keys = [
     # Apps Keys
     Key(["mod1"], "1", lazy.spawn("google-chrome-stable")),
     Key(["mod1"], "2", lazy.spawn("firefox")),
-    Key(["mod1"], "3", lazy.spawn("Opera")),
+    Key(["mod1"], "3", lazy.spawn("subl")),
     Key(["mod1"], "4", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
     Key(["mod1"], "5", lazy.spawn("figma-linux")),
-    Key(["mod1"], "6", lazy.spawn("code-oss")),
-    Key(["mod1"], "7", lazy.spawn("pcmanfm")),
-    Key(["mod1"], "8", lazy.spawn(terminal+" -e vifmrun")),
-    Key(["mod1"], "9", lazy.spawn("VirtualBox Manager")),
-    Key(["mod1"], "0", lazy.spawn("qalculate-gtk")),
+    Key(["mod1"], "6", lazy.spawn("pcmanfm")),
+    Key(["mod1"], "7", lazy.spawn(terminal+" -e vifmrun")),
+    Key(["mod1"], "8", lazy.spawn("VirtualBox Manager")),
+    Key(["mod1"], "9", lazy.spawn("qalculate-gtk")),
+    Key(["mod1"], "0", lazy.spawn("transmission-gtk")),
 ]
 
 # ----- GROUPS -----
 groups_names = [
     ("\uf015", {'layout': 'monadtall'}), # 
-    ("\uf121", {'layout': 'columns', 'matches': [Match(wm_class=["subl3","atom", "code-oss"])]}), # 
+    ("\uf121", {'layout': 'columns', 'matches': [Match(wm_class=["subl","atom", "code-oss"])]}), # 
     ("\uf5ae", {'layout': 'max', 'matches': [Match(wm_class=["figma-linux", "gimp"])]}), # 
     ("\uf144", {'layout': 'columns', 'matches': [Match(wm_class=["vlc"])]}), # 
     ("\uf382", {'layout': 'floating', 'matches': [Match(wm_class=["VirtualBox Manager"])]}) # 
@@ -137,11 +137,11 @@ colors = [
 ]
 
 widget_defaults = dict(
-    font = 'Roboto Medium',
+    font = 'Noto Sans Medium',
     fontsize = 14,
     padding = 3,
-    background = colors[5],
-    foreground = colors[2]
+    background = colors[4],
+    foreground = colors[1]
 )
 
 extension_defaults = widget_defaults.copy()
@@ -151,12 +151,11 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(
-                    scale = 0.6,
-                    background = colors[2]
+                    scale = 0.6
                 ),
                 widget.GroupBox(
                     borderwidth = 1,
-                    active = colors[2],
+                    active = colors[6],
                     inactive = colors[3],
                     rounded = False,
                     highlight_color = colors[6],
@@ -204,7 +203,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
 
@@ -233,6 +232,11 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

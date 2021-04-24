@@ -1,8 +1,6 @@
 #! /bin/sh
 
-# Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
-$HOME/.config/polybar/launch.sh
 
 # BSPWM Configuration
 bspc monitor -d 1 2 3 4 5
@@ -28,10 +26,9 @@ bspc rule -a Opera             desktop=1 follow=on
 bspc rule -a Chromium          desktop=1 follow=on
 
 # Rules for desktop 2
-bspc desktop '^2' --layout monocle
-bspc rule -a code-oss          desktop=2 follow=on
+bspc rule -a Subl              desktop=2 follow=on
 bspc rule -a Atom              desktop=2 follow=on
-bspc rule -a Subl3             desktop=2 follow=on
+bspc rule -a code-oss          desktop=2 follow=on
 
 # Rules for desktop 3
 bspc rule -a figma-linux       desktop=3 follow=on
@@ -54,3 +51,20 @@ bspc rule -a Sxiv                 state=floating
 bspc rule -a Leafpad              state=floating
 bspc rule -a Lightdm-gtk-greeter-settings state=floating
 bspc rule -a Nm-connection-editor state=floating
+bspc rule -a Transmission-gtk state=floating
+
+# Autostart
+
+# Default programs at start
+~/.config/polybar/launch.sh &
+setxkbmap es &
+nm-applet &
+volumeicon &
+numlockx &
+/usr/bin/lxpolkit &
+light-locker &
+udiskie -Nt &
+feh --bg-fill ~/Pictures/Wallpapers/the_simpsons.jpg &
+picom -bf &
+dunst &
+

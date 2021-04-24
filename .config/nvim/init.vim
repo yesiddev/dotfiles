@@ -34,6 +34,9 @@ Plug 'ap/vim-css-color'
 " ui
 Plug 'itchyny/lightline.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'chriskempson/base16-vim'
+Plug 'mike-hearn/base16-vim-lightline'
+Plug 'cormacrelf/vim-colors-github'
 
 call plug#end()
 
@@ -112,6 +115,9 @@ set smartcase
 " closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.ts,*.tsx'
 
+" javascript syntax
+let g:javascript_enable_domhtmlcss=1
+
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
@@ -120,8 +126,8 @@ let NERDTreeShowHidden=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeDirArrows=1
 
-" javascript syntax
-let g:javascript_enable_domhtmlcss=1
+" NerdCommenter
+let g:NERDSpaceDelims = 1           " Add spaces after comment delimiters
 
 "" ----- Shortcuts -----
 let mapleader="\<Space>"

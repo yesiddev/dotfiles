@@ -78,17 +78,17 @@ XF86AudioPrev
 # APPLICATIONS KEY BINDINGS
 
 super + Return
-	alacritty
-
-super + @space
-	dmenu_run
+	kitty
 
 super + comma
+	dmenu_run
+
+super + @space
 	rofi -show drun
 
 super + shift + {r,s,x}
 	{reboot,poweroff,light-locker-command -l}
 
 alt + {1,2,3,4,5,6,7,8,9,0}
-	{google-chrome-stable,firefox,opera,spotify,figma-linux,code-oss,pcmanfm,alacritty -e vifmrun,VirtualBox Manager,qalculate-gtk}
+	{google-chrome-stable,firefox,subl,spotify,figma-linux,pcmanfm,alacritty -e vifmrun,VirtualBox Manager,qalculate-gtk,transmission-gtk}
 

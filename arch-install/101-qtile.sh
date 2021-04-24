@@ -22,7 +22,6 @@ dewm=(
 alacritty
 feh
 firefox
-kitty
 light-locker
 lightdm
 lightdm-gtk-greeter
