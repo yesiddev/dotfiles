@@ -26,7 +26,9 @@ precmd () {print -Pn "\e]0;%c\a"}
 ### CUSTOM SETTINGS ##
 source $XDG_CONFIG_HOME/zsh/aliases.zsh
 source $XDG_CONFIG_HOME/zsh/prompt.zsh
-source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zfunctions/prompt_spaceship_setup
 
 ### COMPLETION ### 
 zstyle :compinstall filename '/home/yesidd/.zshrc'
@@ -35,9 +37,10 @@ compinit
 
 ### SPACESHIP ###
 autoload -U promptinit; promptinit
-prompt spaceship
+# prompt spaceship
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fpath=($fpath "/home/yesidd/.zfunctions")

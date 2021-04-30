@@ -1,22 +1,30 @@
 # Window style
 window:
+  dimensions:
+    columns: 80
+    lines: 48
   padding:
-    x: 5
-    y: 5
-  #decorations: none
+    x: 0
+    y: 0
+  decorations: full
+  dynamic_title: true
+
 scrolling:
-  history: 5000
+  history: 10000
   multiplier: 3
 
-window.dynamic_title: true
-
-# Font
+# Font configuration
 font:
   normal:
-    family: SF Mono Powerline
-    style: Medium
-
-  size: 12
+    family: JetBrains Mono
+    style: Regular
+  bold:
+    family: JetBrains Mono
+    style: Bold
+  italic:
+    family: JetBrains Mono
+    style: Italic
+  size: 11
   offset:
     x: 0
     y: 0
@@ -25,39 +33,107 @@ font:
     y: 0
   use_thin_strokes: false
 
-debug:
-  persistent_logging: false
-
 draw_bold_text_with_bright_colors: true
+
+shell:
+  program: /usr/bin/zsh
+  args:
+    - --login
 
 # Keybinding
 key_bindings:
   - { key: N, mods: Control, action: SpawnNewInstance }
+  - { key: Paste, action: Paste }
+  - { key: Copy, action: Copy }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: L, mods: Control, mode: ~Vi|~Search, chars: "\f" }
+  - {
+      key: PageUp,
+      mods: Shift,
+      mode: ~Alt,
+      action: ScrollPageUp
+    }
+  - {
+      key: PageDown,
+      mods: Shift,
+      mode: ~Alt,
+      action: ScrollPageDown
+    }
+  - {
+      key: Home,
+      mods: Shift,
+      mode: ~Alt,
+      action: ScrollToTop
+    }
+  - {
+      key: End,
+      mods: Shift,
+      mode: ~Alt,
+      action: ScrollToBottom
+    }
+  - { key: V, mods: Control|Shift, mode: ~Vi, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - {
+      key: F,
+      mods: Control|Shift,
+      mode: ~Search,
+      action: SearchForward
+    }
+  - {
+      key: B,
+      mods: Control|Shift,
+      mode: ~Search,
+      action: SearchBackward
+    }
+  - {
+      key: C,
+      mods: Control|Shift,
+      mode: Vi|~Search,
+      action: ClearSelection
+    }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Plus, mods: Control, action: IncreaseFontSize }
+  - {
+      key: NumpadAdd,
+      mods: Control,
+      action: IncreaseFontSize
+    }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - {
+      key: NumpadSubtract,
+      mods: Control,
+      action: DecreaseFontSize
+    }
 
+# Colors
 colors:
   # Default colors
   primary:
-    background: '#2E3440'
-    foreground: '#D8DEE9'
+    foreground: '#282c34'
+    background: '#ffffff'
 
   # Normal colors
   normal:
-    black: '#3B4252'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#88C0D0'
-    white: '#E5E9F0'
+    # NOTE: Use '#131613' for the `black` color if you'd like to see
+    # black text on the background.
+    black: '#282c34'
+    red: '#e06c75'
+    green: '#98c379'
+    yellow: '#d19a66'
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
+    white: '#abb2bf'
 
   # Bright colors
   bright:
-    black: '#4C566A'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#8FBCBB'
-    white: '#ECEFF4'
+    black: '#5c6370'
+    red: '#e06c75'
+    green: '#98c379'
+    yellow: '#d19a66'
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
+    white: '#ffffff'

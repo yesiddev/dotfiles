@@ -33,10 +33,8 @@ Plug 'ap/vim-css-color'
 
 " ui
 Plug 'itchyny/lightline.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'chriskempson/base16-vim'
-Plug 'mike-hearn/base16-vim-lightline'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -75,11 +73,15 @@ set ruler
 set title
 set number
 set cursorline
-set termguicolors
 set signcolumn=yes
-"set colorcolumn=+1
+" set colorcolumn=+1
 
-colorscheme nord
+if (has("termguicolors"))
+      set termguicolors
+endif
+
+set background=light
+colorscheme one
 
 let g:lightline = {
       \ 'active': {
@@ -98,7 +100,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'kitestatus': 'kite#statusline'
       \ },
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'one',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
@@ -117,6 +119,12 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.ts,*.tsx'
 
 " javascript syntax
 let g:javascript_enable_domhtmlcss=1
+
+" IndentLine
+let g:indentLine_char = '⋮'
+let g:indentLine_first_char = '⋮'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
