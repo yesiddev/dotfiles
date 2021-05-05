@@ -77,7 +77,7 @@ set signcolumn=yes
 " set colorcolumn=+1
 
 if (has("termguicolors"))
-      set termguicolors
+  set termguicolors
 endif
 
 set background=light
@@ -121,8 +121,6 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.ts,*.tsx'
 let g:javascript_enable_domhtmlcss=1
 
 " IndentLine
-let g:indentLine_char = '⋮'
-let g:indentLine_first_char = '⋮'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
 
