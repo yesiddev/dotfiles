@@ -1,3 +1,6 @@
+# Make sudo work with aliases
+alias sudo='sudo '
+
 # Directory navigation
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -13,8 +16,8 @@ alias sv='sudoedit'
 # Directories
 alias dw='cd $HOME/Downloads'
 alias dc='cd $HOME/Documents'
-alias pj='cd $HOME/Projects'
-alias pr='cd $HOME/Projects/_repos'
+alias dev='cd $HOME/Projects'
+alias repos='cd $HOME/Projects/_repos'
 alias pp='cd $HOME/Projects/_practice'
 
 # Config files
@@ -49,7 +52,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias md='mkdir -p'
-alias rd='rm -rf'
+alias rd='rm -rfi'
 alias vf='vifmrun'
 alias vifm='vifmrun'
 alias trash='gio trash'

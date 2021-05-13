@@ -16,10 +16,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " utilities
+" Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
-"Plug 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'sheerun/vim-polyglot'
 
 " ide
 Plug 'jiangmiao/auto-pairs'
@@ -33,8 +33,9 @@ Plug 'ap/vim-css-color'
 
 " ui
 Plug 'itchyny/lightline.vim'
-Plug 'cormacrelf/vim-colors-github'
-Plug 'rakr/vim-one'
+Plug 'arcticicestudio/nord-vim'
+Plug 'chriskempson/base16-vim'
+Plug 'mike-hearn/base16-vim-lightline'
 
 call plug#end()
 
@@ -80,8 +81,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set background=light
-colorscheme one
+colorscheme nord
 
 let g:lightline = {
       \ 'active': {
@@ -100,7 +100,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'kitestatus': 'kite#statusline'
       \ },
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'nord',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
@@ -121,8 +121,9 @@ let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx,*.ts,*.tsx'
 let g:javascript_enable_domhtmlcss=1
 
 " IndentLine
+let g:indentLine_char = '┊'
+let g:indentLine_first_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1

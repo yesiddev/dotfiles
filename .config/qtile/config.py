@@ -10,7 +10,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 # ----- KEY BINDINGS -----
 keys = [
@@ -67,7 +67,7 @@ keys = [
     # Apps Keys
     Key(["mod1"], "1", lazy.spawn("google-chrome-stable")),
     Key(["mod1"], "2", lazy.spawn("firefox")),
-    Key(["mod1"], "3", lazy.spawn("subl")),
+    Key(["mod1"], "3", lazy.spawn("code-oss")),
     Key(["mod1"], "4", lazy.spawn("spotify"), lazy.group["\uf144"].toscreen()),
     Key(["mod1"], "5", lazy.spawn("figma-linux")),
     Key(["mod1"], "6", lazy.spawn("pcmanfm")),
@@ -137,7 +137,7 @@ colors = [
 ]
 
 widget_defaults = dict(
-    font = 'Noto Sans Medium',
+    font = 'Roboto Mono Medium',
     fontsize = 14,
     padding = 3,
     background = colors[4],

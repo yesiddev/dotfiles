@@ -2,7 +2,7 @@ configuration {
   display-run:                  " ";
   display-drun:                 " ";
   display-window:               "  ";
-  font:                         "JetBrains Mono Medium 13";
+  font:                         "Roboto Mono Medium 13";
   modi:                         "window,run,drun";
   hide-scrollbar:               true;
   lines:                        5;
