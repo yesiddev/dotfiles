@@ -1,30 +1,26 @@
-# Window style
 window:
   dimensions:
     columns: 80
-    lines: 48
+    lines: 20
   padding:
     x: 0
     y: 4
   decorations: full
   dynamic_title: true
-
 scrolling:
   history: 10000
   multiplier: 3
-
-# Font configuration
 font:
   normal:
-    family: JetBrains Mono
+    family: OperatorMono Nerd Font
     style: Medium
   bold:
-    family: JetBrains Mono
-    style: Bold 
+    family: OperatorMono Nerd Font
+    style: Bold
   italic:
-    family: JetBrains Mono
+    family: OperatorMono Nerd Font
     style: Italic
-  size: 11
+  size: 14
   offset:
     x: 0
     y: 0
@@ -32,82 +28,82 @@ font:
     x: 0
     y: 0
   use_thin_strokes: false
-
 draw_bold_text_with_bright_colors: true
-
 shell:
   program: /usr/bin/zsh
   args:
     - --login
-
-# Keybinding
 key_bindings:
-  - { key: N, mods: Control, action: SpawnNewInstance }
-  - { key: Paste, action: Paste }
-  - { key: Copy, action: Copy }
-  - { key: L, mods: Control, action: ClearLogNotice }
-  - { key: L, mods: Control, mode: ~Vi|~Search, chars: "\f" }
-  - {
-      key: PageUp,
-      mods: Shift,
-      mode: ~Alt,
-      action: ScrollPageUp
-    }
-  - {
-      key: PageDown,
-      mods: Shift,
-      mode: ~Alt,
-      action: ScrollPageDown
-    }
-  - {
-      key: Home,
-      mods: Shift,
-      mode: ~Alt,
-      action: ScrollToTop
-    }
-  - {
-      key: End,
-      mods: Shift,
-      mode: ~Alt,
-      action: ScrollToBottom
-    }
-  - { key: V, mods: Control|Shift, mode: ~Vi, action: Paste }
-  - { key: C, mods: Control|Shift, action: Copy }
-  - {
-      key: F,
-      mods: Control|Shift,
-      mode: ~Search,
-      action: SearchForward
-    }
-  - {
-      key: B,
-      mods: Control|Shift,
-      mode: ~Search,
-      action: SearchBackward
-    }
-  - {
-      key: C,
-      mods: Control|Shift,
-      mode: Vi|~Search,
-      action: ClearSelection
-    }
-  - { key: Insert, mods: Shift, action: PasteSelection }
-  - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: Equals, mods: Control, action: IncreaseFontSize }
-  - { key: Plus, mods: Control, action: IncreaseFontSize }
-  - {
-      key: NumpadAdd,
-      mods: Control,
-      action: IncreaseFontSize
-    }
-  - { key: Minus, mods: Control, action: DecreaseFontSize }
-  - {
-      key: NumpadSubtract,
-      mods: Control,
-      action: DecreaseFontSize
-    }
-
-# Colors
+  - key: N
+    mods: Control
+    action: SpawnNewInstance
+  - key: Paste
+    action: Paste
+  - key: Copy
+    action: Copy
+  - key: L
+    mods: Control
+    action: ClearLogNotice
+  - key: L
+    mods: Control
+    mode: ~Vi|~Search
+    chars: "\f"
+  - key: PageUp
+    mods: Shift
+    mode: ~Alt
+    action: ScrollPageUp
+  - key: PageDown
+    mods: Shift
+    mode: ~Alt
+    action: ScrollPageDown
+  - key: Home
+    mods: Shift
+    mode: ~Alt
+    action: ScrollToTop
+  - key: End
+    mods: Shift
+    mode: ~Alt
+    action: ScrollToBottom
+  - key: V
+    mods: Control|Shift
+    mode: ~Vi
+    action: Paste
+  - key: C
+    mods: Control|Shift
+    action: Copy
+  - key: F
+    mods: Control|Shift
+    mode: ~Search
+    action: SearchForward
+  - key: B
+    mods: Control|Shift
+    mode: ~Search
+    action: SearchBackward
+  - key: C
+    mods: Control|Shift
+    mode: Vi|~Search
+    action: ClearSelection
+  - key: Insert
+    mods: Shift
+    action: PasteSelection
+  - key: Key0
+    mods: Control
+    action: ResetFontSize
+  - key: Equals
+    mods: Control
+    action: IncreaseFontSize
+  - key: Plus
+    mods: Control
+    action: IncreaseFontSize
+  - key: NumpadAdd
+    mods: Control
+    action: IncreaseFontSize
+  - key: Minus
+    mods: Control
+    action: DecreaseFontSize
+  - key: NumpadSubtract
+    mods: Control
+    action: DecreaseFontSize
 colors:
   name: Ocean (dark)
   author: Chris Kempson

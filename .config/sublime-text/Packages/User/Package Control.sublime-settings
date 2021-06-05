@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"Babel",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"ColorPicker",
+		"Emmet",
+		"Package Control",
+		"Sass",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-eslint",
+		"Terminus",
+		"Theme - Spacegray",
+	],
+}

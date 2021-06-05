@@ -16,9 +16,10 @@ alias sv='sudoedit'
 # Directories
 alias dw='cd $HOME/Downloads'
 alias dc='cd $HOME/Documents'
-alias dev='cd $HOME/Projects'
-alias repos='cd $HOME/Projects/_repos'
-alias pp='cd $HOME/Projects/_practice'
+alias code='cd $HOME/code'
+alias repos='cd $HOME/code/_repos'
+alias pp='cd $HOME/code/_practice'
+alias site='cd $HOME/code/yesid.dev'
 
 # Config files
 alias :alacritty='vim ~/.config/alacritty/alacritty.yml'
@@ -41,18 +42,18 @@ alias gp='git push'
 alias gpl='git pull'
 
 # dotfiles
-alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dga='dg add'
-alias dgc='dg commit -m'
-alias dgp='dg push'
-alias dgs='dg status'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dota='dot add'
+alias dotc='dot commit -m'
+alias dotp='dot push'
+alias dots='dot status'
 
 # File management
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias md='mkdir -p'
-alias rd='rm -rfi'
+alias rd='rm -rf'
 alias vf='vifmrun'
 alias vifm='vifmrun'
 alias trash='gio trash'

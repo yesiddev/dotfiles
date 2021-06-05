@@ -1,14 +1,14 @@
 ##!/bin/sh
 
-#[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 # Path
 export PATH=/usr/local/bin:/opt/local/bin:$HOME/bin:$HOME/.local/bin:$PATH
 
 # Screen
-sh $HOME/.screenlayout/display.sh &
+# sh $HOME/.screenlayout/display.sh &
 
 # Disable screenlock
-xset -dpms
-xset s noblank
-xset s off
+# xset -dpms
+# xset s noblank
+# xset s off

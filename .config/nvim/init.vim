@@ -15,10 +15,11 @@ endif
 " Load Plugins
 call plug#begin('~/.config/nvim/plugged')
 
+" syntax
+Plug 'sheerun/vim-polyglot'
+
 " utilities
-" Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'christoomey/vim-tmux-navigator'
 
 " ide
@@ -33,7 +34,10 @@ Plug 'ap/vim-css-color'
 
 " ui
 Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'ackyshake/spacegray.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'mike-hearn/base16-vim-lightline'
 
@@ -81,8 +85,15 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme nord
+colorscheme base16-ocean
 
+" Search
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Lightline
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
@@ -100,18 +111,12 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'kitestatus': 'kite#statusline'
       \ },
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'base16_ocean',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
       \ }
       \}
-
-" Search
-set nohlsearch
-set incsearch
-set ignorecase
-set smartcase
 
 "" ----- Plugins Settings -----
 " closetag
