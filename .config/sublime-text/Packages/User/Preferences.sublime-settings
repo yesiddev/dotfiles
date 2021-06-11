@@ -7,9 +7,9 @@
 	"draw_minimap_border": true,
 	"draw_white_space": "selection",
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "OperatorMono Nerd Font Medium",
+	"font_face": "Operator Mono Medium",
 	"font_options": ["dlig", "clig", "liga", "calt"],
-	"font_size": 12,
+	"font_size": 13,
 	"gtk_client_side_window_decorations": false,
 	"highlight_line": true,
 	"ignored_packages":
@@ -40,4 +40,5 @@
 	"theme": "Spacegray.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"word_wrap": true,
+	"wrap_width": 80,
 }

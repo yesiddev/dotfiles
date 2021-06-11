@@ -12,13 +12,13 @@ scrolling:
   multiplier: 3
 font:
   normal:
-    family: OperatorMono Nerd Font
-    style: Medium
+    family: Operator Mono
+    style: Book
   bold:
-    family: OperatorMono Nerd Font
+    family: Operator Mono
     style: Bold
   italic:
-    family: OperatorMono Nerd Font
+    family: Operator Mono
     style: Italic
   size: 14
   offset:
