@@ -3,6 +3,9 @@
 
 ### VARIABLES ###
 
+# Path
+export PATH=/usr/local/bin:/opt/local/bin:$HOME/bin:$HOME/.local/bin:$PATH
+
 # Default folders
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH_PLUGINS="/usr/share/zsh/plugins"
