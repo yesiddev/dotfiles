@@ -7,7 +7,7 @@
 	"draw_minimap_border": true,
 	"draw_white_space": "selection",
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Operator Mono Medium",
+	"font_face": "Operator Mono",
 	"font_size": 12,
 	"gtk_client_side_window_decorations": false,
 	"highlight_line": true,
