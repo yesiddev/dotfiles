@@ -16,7 +16,7 @@ export LC_ALL=en_US.UTF-8
 
 # Default programs
 export EDITOR='nvim'
-export TERMINAL='kitty'
+export TERMINAL='alacritty'
 export BROWSER='google-chrome-stable'
 
 ### DEFAULT SETTINGS ###
